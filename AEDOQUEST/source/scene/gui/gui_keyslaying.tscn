@@ -1,0 +1,161 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://source/sprite/ui/key.png" type="Texture" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://source/font/Basis33/basis33.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = SubResource( 1 )
+
+[node name="KeyslayingGUI" type="MarginContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.58, 0.58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Keys" type="HBoxContainer" parent="."]
+margin_right = 2208.0
+margin_bottom = 288.0
+
+[node name="A" type="Button" parent="Keys"]
+margin_right = 312.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/A"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="B" type="Button" parent="Keys"]
+margin_left = 316.0
+margin_right = 628.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/B"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "B"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="Button" parent="Keys"]
+margin_left = 632.0
+margin_right = 944.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/C"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "C"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="D" type="Button" parent="Keys"]
+margin_left = 948.0
+margin_right = 1260.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/D"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="E" type="Button" parent="Keys"]
+margin_left = 1264.0
+margin_right = 1576.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/E"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="F" type="Button" parent="Keys"]
+margin_left = 1580.0
+margin_right = 1892.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/F"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "F"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G" type="Button" parent="Keys"]
+margin_left = 1896.0
+margin_right = 2208.0
+margin_bottom = 288.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Label" type="Label" parent="Keys/G"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 90.9416
+margin_top = 30.9664
+margin_right = 130.942
+margin_bottom = 94.9664
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = SubResource( 2 )
+text = "G"
+__meta__ = {
+"_edit_use_anchors_": false
+}
