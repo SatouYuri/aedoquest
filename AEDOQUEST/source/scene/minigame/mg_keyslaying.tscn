@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://source/scene/gui/gui_keyslaying.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/sprite/background/peacetown.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://source/sprite/ui/gradient.png" type="Texture" id=5]
 [ext_resource path="res://source/script/minigame/mg_keyslaying.gd" type="Script" id=6]
 [ext_resource path="res://source/sprite/ui/dottedline.png" type="Texture" id=7]
+[ext_resource path="res://source/sprite/ui/gradientline.png" type="Texture" id=8]
+[ext_resource path="res://source/sprite/ui/feedbackline.png" type="Texture" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -58,41 +60,203 @@ rect_scale = Vector2( 0.42, 0.42 )
 
 [node name="Pentagram" type="Node2D" parent="."]
 
-[node name="ClefShade" type="Sprite" parent="Pentagram"]
-position = Vector2( 118, 266.355 )
+[node name="Clef" type="Node2D" parent="Pentagram"]
+position = Vector2( -43, 5 )
 scale = Vector2( 1.75, 1.75 )
-texture = ExtResource( 3 )
 
-[node name="Clef" type="Sprite" parent="Pentagram"]
-self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 109.457, 266.355 )
-scale = Vector2( 1.75, 1.75 )
-texture = ExtResource( 3 )
+[node name="ClefShade" type="TextureProgress" parent="Pentagram/Clef"]
+margin_left = 4.0
+margin_top = -1.14286
+margin_right = 180.0
+margin_bottom = 298.857
+step = 0.01
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+tint_progress = Color( 0.87451, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clef" type="TextureProgress" parent="Pentagram/Clef"]
+margin_right = 40.0
+margin_bottom = 40.0
+step = 0.01
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+tint_progress = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LineE" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 385 )
 scale = Vector2( 3.6, 1 )
 texture = ExtResource( 4 )
 
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineE"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineE"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineE"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="LineF" type="Sprite" parent="Pentagram"]
+position = Vector2( 731.174, 355 )
+scale = Vector2( 3.6, 1 )
+
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineF"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineF"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineF"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
 [node name="LineG" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 325 )
 scale = Vector2( 3.6, 1 )
 texture = ExtResource( 4 )
+
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineG"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineG"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineG"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="LineA" type="Sprite" parent="Pentagram"]
+position = Vector2( 731.174, 295 )
+scale = Vector2( 3.6, 1 )
+
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineA"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineA"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineA"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
 
 [node name="LineB" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 265 )
 scale = Vector2( 3.6, 1 )
 texture = ExtResource( 4 )
 
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineB"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineB"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineB"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="LineC" type="Sprite" parent="Pentagram"]
+position = Vector2( 731.174, 235 )
+scale = Vector2( 3.6, 1 )
+
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineC"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineC"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineC"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
 [node name="LineD" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 205 )
 scale = Vector2( 3.6, 1 )
 texture = ExtResource( 4 )
 
-[node name="LineF" type="Sprite" parent="Pentagram"]
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineD"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineD"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineD"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="LineE2" type="Sprite" parent="Pentagram"]
+position = Vector2( 731.174, 175 )
+scale = Vector2( 3.6, 1 )
+
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineE2"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineE2"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineE2"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="LineF2" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 145 )
 scale = Vector2( 3.6, 1 )
 texture = ExtResource( 4 )
+
+[node name="PlayerGrad" type="Sprite" parent="Pentagram/LineF2"]
+modulate = Color( 1, 0.352941, 0, 0 )
+texture = ExtResource( 8 )
+
+[node name="EnemyGrad" type="Sprite" parent="Pentagram/LineF2"]
+modulate = Color( 0, 0.368627, 1, 0 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="FeedbackGrad" type="Sprite" parent="Pentagram/LineF2"]
+modulate = Color( 0.705882, 0, 1, 0 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 9 )
 
 [node name="VLine1" type="Sprite" parent="Pentagram"]
 position = Vector2( 631.174, 266.382 )

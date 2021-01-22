@@ -1,26 +1,29 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot4.png" type="Texture" id=1]
 [ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot1.png" type="Texture" id=2]
 [ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot3.png" type="Texture" id=3]
 [ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot2.png" type="Texture" id=4]
 [ext_resource path="res://source/script/object/dynamic/echoshot.gd" type="Script" id=5]
+[ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot5.png" type="Texture" id=6]
+[ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot6.png" type="Texture" id=7]
+[ext_resource path="res://source/sprite/object/dynamic/echoshot/echoshot7.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "New Anim",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "shoot",
 "speed": 30.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "fire",
+"speed": 30.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 20.5576, 26.864 )
+extents = Vector2( 20.5576, 5.88486 )
 
 [node name="EchoShot" type="Area2D"]
 script = ExtResource( 5 )
@@ -30,8 +33,10 @@ position = Vector2( -31.864, -33.702 )
 scale = Vector2( 0.43082, 0.43082 )
 frames = SubResource( 1 )
 animation = "shoot"
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -17.498, -24.036 )
+position = Vector2( -17.498, -3.036 )
 shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_EchoShot_area_entered"]
