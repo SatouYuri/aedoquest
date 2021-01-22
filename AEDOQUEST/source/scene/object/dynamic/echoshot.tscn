@@ -26,13 +26,12 @@ extents = Vector2( 20.5576, 26.864 )
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -31.854, -33.7025 )
+position = Vector2( -31.864, -33.702 )
 scale = Vector2( 0.43082, 0.43082 )
 frames = SubResource( 1 )
 animation = "shoot"
-frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -17.4977, -24.0364 )
+position = Vector2( -17.498, -24.036 )
 shape = SubResource( 2 )
