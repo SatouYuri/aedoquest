@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.101961, 1, 0, 1 )
+
+[node name="eighth" type="Panel"]
+margin_left = 600.0
+margin_right = 700.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 100, 200 )
+custom_styles/panel = SubResource( 4 )
