@@ -129,8 +129,8 @@ func earnCharge(chargePercentage : float):
 func takeDamage(damagePercentage : float):
 	if $Pentagram/Clef/Clef.value > 0:
 		$Pentagram/Clef/Clef.value -= damagePercentage
-	else:
-		$Pentagram/Clef/Clef.value = 0.00
+	if $Pentagram/Clef/Clef.value <= 0:
+		get_tree().change_scene("res://source/scene/minigame/mg_keyslaying.tscn")
 
 func clearShots():
 	for s in get_children():
