@@ -101,6 +101,8 @@ func shoot(line : String, zIndex : int, direction : int):
 	var newEchoShot = EchoShot.instance()
 	add_child(newEchoShot)
 	newEchoShot.setDirection(direction)
+	if direction == -1:
+		newEchoShot.SPEED = newEchoShot.SPEED/2
 	newEchoShot.line = line
 	if direction == 1:
 		newEchoShot.position.x = X_AXIS_PLAYER_START

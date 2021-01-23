@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://source/scene/gui/gui_keyslaying.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/sprite/background/peacetown.png" type="Texture" id=2]
@@ -9,6 +9,15 @@
 [ext_resource path="res://source/sprite/ui/dottedline.png" type="Texture" id=7]
 [ext_resource path="res://source/sprite/ui/gradientline.png" type="Texture" id=8]
 [ext_resource path="res://source/sprite/ui/feedbackline.png" type="Texture" id=9]
+[ext_resource path="res://source/notes/d5.wav" type="AudioStream" id=10]
+[ext_resource path="res://source/notes/e4.wav" type="AudioStream" id=11]
+[ext_resource path="res://source/notes/f4.wav" type="AudioStream" id=12]
+[ext_resource path="res://source/notes/g4.wav" type="AudioStream" id=13]
+[ext_resource path="res://source/notes/b5.wav" type="AudioStream" id=14]
+[ext_resource path="res://source/notes/e5.wav" type="AudioStream" id=15]
+[ext_resource path="res://source/notes/c5.wav" type="AudioStream" id=16]
+[ext_resource path="res://source/notes/a5.wav" type="AudioStream" id=17]
+[ext_resource path="res://source/notes/f5.wav" type="AudioStream" id=18]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -110,6 +119,9 @@ modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineE"]
+stream = ExtResource( 11 )
+
 [node name="LineF" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 355 )
 scale = Vector2( 3.6, 1 )
@@ -127,6 +139,9 @@ flip_h = true
 modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineF"]
+stream = ExtResource( 12 )
 
 [node name="LineG" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 325 )
@@ -147,6 +162,9 @@ modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineG"]
+stream = ExtResource( 13 )
+
 [node name="LineA" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 295 )
 scale = Vector2( 3.6, 1 )
@@ -164,6 +182,9 @@ flip_h = true
 modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineA"]
+stream = ExtResource( 17 )
 
 [node name="LineB" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 265 )
@@ -184,6 +205,9 @@ modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineB"]
+stream = ExtResource( 14 )
+
 [node name="LineC" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 235 )
 scale = Vector2( 3.6, 1 )
@@ -201,6 +225,9 @@ flip_h = true
 modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineC"]
+stream = ExtResource( 16 )
 
 [node name="LineD" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 205 )
@@ -221,6 +248,9 @@ modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineD"]
+stream = ExtResource( 10 )
+
 [node name="LineE2" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 175 )
 scale = Vector2( 3.6, 1 )
@@ -238,6 +268,9 @@ flip_h = true
 modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineE2"]
+stream = ExtResource( 15 )
 
 [node name="LineF2" type="Sprite" parent="Pentagram"]
 position = Vector2( 731.174, 145 )
@@ -257,6 +290,9 @@ flip_h = true
 modulate = Color( 0.705882, 0, 1, 0 )
 scale = Vector2( 1, 1.5 )
 texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pentagram/LineF2"]
+stream = ExtResource( 18 )
 
 [node name="VLine1" type="Sprite" parent="Pentagram"]
 position = Vector2( 631.174, 266.382 )
@@ -286,4 +322,6 @@ texture = ExtResource( 7 )
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="TEST_FREQUENCY" type="Timer" parent="Timers"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="timeout" from="Timers/TEST_FREQUENCY" to="." method="_on_TEST_FREQUENCY_timeout"]

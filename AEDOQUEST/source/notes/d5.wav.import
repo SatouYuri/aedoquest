@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/d5.wav-3a8ed5b3ef073ee9b75925d4c710bb6a.sample"
+
+[deps]
+
+source_file="res://source/notes/d5.wav"
+dest_files=[ "res://.import/d5.wav-3a8ed5b3ef073ee9b75925d4c710bb6a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
