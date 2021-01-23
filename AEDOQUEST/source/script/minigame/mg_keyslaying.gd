@@ -4,7 +4,7 @@ extends Node2D
 const X_AXIS_START = 220 #TODO: Deixar essa constante menos hardcoded...
 const X_AXIS_END = 1240 #TODO: Deixar essa constante menos hardcoded...
 const X_AXIS_ENEMY_PREVIEW = 1032
-const X_AXIS_PLAYER_START = 432
+const X_AXIS_PLAYER_START = 220
 const EchoShot = preload("res://source/scene/object/dynamic/echoshot.tscn")
 const E = 0
 const F = 1

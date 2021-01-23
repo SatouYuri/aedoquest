@@ -30,9 +30,8 @@ func _physics_process(delta):
 		get_parent().takeDamage(5.00)
 		queue_free()
 	elif (position.x < 220 and direction == -1):
-		
+		queue_free()
 		get_parent().takeDamage(5.00)
-		get_parent().clearShots()
 	
 	#Disparo Inimigo
 	if direction == -1 and position.x < 1032 and $AnimatedSprite.animation == "fire":
@@ -47,6 +46,6 @@ func _on_EchoShot_area_entered(area):
 			get_parent().earnCharge(2.50)
 		else:
 			get_parent().takeDamage(5.00)
-			get_parent().clearShots()
+			queue_free()
 		area.queue_free()
 		queue_free()
