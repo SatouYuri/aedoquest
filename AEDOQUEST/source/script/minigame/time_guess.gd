@@ -5,6 +5,7 @@ var padrao = [3,3,2,2,2]
 const sounds_path = "res://source/notes_strings/"
 var sounds = ["G4","G4","A4","G4","C5"]
 var sound_index = 0
+var last_player = null
 var interval_time = [240.0/bpm,120.0/bpm,60.0/bpm,30.0/bpm]
 var note_scenes = [preload("res://source/scene/object/notetime/whole.tscn"),
 			preload("res://source/scene/object/notetime/half.tscn"),
@@ -20,14 +21,15 @@ func _ready():
 	$Notas/b4.connect("pressed",self,"add_note",[3])
 	$Notas/b5.connect("pressed",self,"delete_last")
 	
-	$AudioStreamPlayer/Timer.connect("timeout", self,"next")
-	$AudioStreamPlayer/Timer.wait_time = 1
-	$AudioStreamPlayer/Timer.start()
+	$AudioTimer.connect("timeout", self,"next")
+	$AudioTimer.wait_time = 1
+	$AudioTimer.start()
 
 func next():
 	if sound_index>=sounds.size():
-		$AudioStreamPlayer.stop()
-		$AudioStreamPlayer/Timer.stop()
+		if last_player != null:
+			last_player.start_death()
+		$AudioTimer.stop()
 		yield(get_tree().create_timer(1), "timeout")
 		sound_index = 0
 	print(interval_time[padrao[sound_index]])
@@ -66,7 +68,13 @@ func delete_all():
 	order = []
 
 func play_for_seconds(note,time):
-	$AudioStreamPlayer.stream = load(sounds_path+note+".ogg")
-	$AudioStreamPlayer.play()
-	$AudioStreamPlayer/Timer.wait_time = time
-	$AudioStreamPlayer/Timer.start()
+	var new_player = SmartPlayer.new()
+	
+	new_player.stream = load(sounds_path+note+".ogg")
+	add_child(new_player)
+	new_player.play()
+	if last_player != null:
+		last_player.start_death()
+	last_player = new_player
+	$AudioTimer.wait_time = time
+	$AudioTimer.start()

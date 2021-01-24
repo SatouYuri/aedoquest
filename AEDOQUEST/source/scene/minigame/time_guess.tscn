@@ -183,7 +183,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[node name="Timer" type="Timer" parent="AudioStreamPlayer"]
+[node name="AudioTimer" type="Timer" parent="."]
 wait_time = 0.019

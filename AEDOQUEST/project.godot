@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "SmartPlayer",
+"language": "GDScript",
+"path": "res://SmartPlayer.gd"
+} ]
 _global_script_class_icons={
-
+"SmartPlayer": ""
 }
 
 [application]
