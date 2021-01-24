@@ -182,3 +182,8 @@ text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="AudioStreamPlayer"]
+wait_time = 0.019
