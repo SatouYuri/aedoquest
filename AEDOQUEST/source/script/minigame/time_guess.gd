@@ -1,11 +1,12 @@
 extends Node2D
 
 var bpm = 60
-var padrao = [3,3,2,2,2]
+var padrao = [[3,3,2,2,2],[2,2,2,2],[3,3,3,3,2,3,3]]
+var is_playing = false
 const sounds_path = "res://source/notes_piano/"
-var sounds = ["G4","G4","A4","G4","C5"]
+var sounds = [["G4","G4","A4","G4","C5"],["C4","D4","E4","F4"],["G4","F4","E4","D4","C4","D4","E4"]]
 var sound_index = 0
-var last_player = null
+var sequence_index = 0
 var interval_time = [240.0/bpm,120.0/bpm,60.0/bpm,30.0/bpm]
 var note_scenes = [preload("res://source/scene/object/notetime/whole.tscn"),
 			preload("res://source/scene/object/notetime/half.tscn"),
@@ -20,20 +21,29 @@ func _ready():
 	$Notas/b3.connect("pressed",self,"add_note",[2])
 	$Notas/b4.connect("pressed",self,"add_note",[3])
 	$Notas/b5.connect("pressed",self,"delete_last")
-	
+	$Playbutton.connect("pressed", self,"playmusic")
+	$Metronomo/Timer.wait_time = 60.0/bpm
 	$AudioTimer.connect("timeout", self,"next")
-	$AudioTimer.wait_time = 1
-	$AudioTimer.start()
+	$Metronomo/Timer.connect("timeout",$Metronomo,"play")
+	yield(get_tree().create_timer(1),"timeout")
+	playmusic()
+
+func playmusic():
+	if not is_playing:
+		sound_index = 0
+		$Metronomo.play()
+		$Metronomo/Timer.start()
+		next()
+		pass
 
 func next():
-	if sound_index>=sounds.size():
-		if last_player != null:
-			last_player.start_death()
+	if sequence_index<sounds.size() and sound_index>=sounds[sequence_index].size():
+		$Metronomo.play()
 		$AudioTimer.stop()
-		yield(get_tree().create_timer(1), "timeout")
-		sound_index = 0
-	print(interval_time[padrao[sound_index]])
-	play_for_seconds(sounds[sound_index],interval_time[padrao[sound_index]])
+		$Metronomo/Timer.stop()
+		is_playing = false
+		return
+	play_for_seconds(sounds[sequence_index][sound_index],interval_time[padrao[sequence_index][sound_index]])
 	sound_index+=1
 	pass
 
@@ -51,8 +61,18 @@ func add_note(var index):
 		size_total += sizes[child]
 	if size_total < 800:
 		return
-	if order == padrao:
-		$UI/victory.show()
+	if order == padrao[sequence_index]:
+		delete_all()
+		$UI/AnimationPlayer.play("right")
+		sequence_index+=1
+		if sequence_index == padrao.size():
+			get_tree().quit()
+			pass
+		$Metronomo/Timer.stop()
+		$AudioTimer.stop()
+		yield(get_tree().create_timer(1), "timeout")
+		playmusic()
+		
 	else:
 		delete_all()
 		$UI/AnimationPlayer.play("wrong")
@@ -69,12 +89,10 @@ func delete_all():
 
 func play_for_seconds(note,time):
 	var new_player = SmartPlayer.new()
-	
+	new_player.lifespan = time
 	new_player.stream = load(sounds_path+note+".ogg")
 	add_child(new_player)
 	new_player.play()
-	if last_player != null:
-		last_player.start_death()
-	last_player = new_player
 	$AudioTimer.wait_time = time
 	$AudioTimer.start()
+
