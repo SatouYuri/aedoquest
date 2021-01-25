@@ -2,7 +2,7 @@ extends Node2D
 
 var bpm = 60
 var padrao = [3,3,2,2,2]
-const sounds_path = "res://source/notes_strings/"
+const sounds_path = "res://source/notes_piano/"
 var sounds = ["G4","G4","A4","G4","C5"]
 var sound_index = 0
 var last_player = null

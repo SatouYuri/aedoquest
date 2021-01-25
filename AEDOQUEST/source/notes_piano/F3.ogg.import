@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/F3.ogg-472b52357c58fc776fc01e2b2867a00c.oggstr"
+
+[deps]
+
+source_file="res://source/notes_piano/F3.ogg"
+dest_files=[ "res://.import/F3.ogg-472b52357c58fc776fc01e2b2867a00c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

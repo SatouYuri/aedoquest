@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 class_name SmartPlayer
-const dbps = 80
+const dbps = 120
 func _ready():
 	set_physics_process(false)
 	pass
