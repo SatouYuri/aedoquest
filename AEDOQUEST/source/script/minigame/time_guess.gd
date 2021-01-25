@@ -38,9 +38,11 @@ func playmusic():
 
 func next():
 	if sequence_index<sounds.size() and sound_index>=sounds[sequence_index].size():
-		$Metronomo.play()
-		$AudioTimer.stop()
 		$Metronomo/Timer.stop()
+		if not $Metronomo.is_playing():
+			$Metronomo.play()
+		$AudioTimer.stop()
+		
 		is_playing = false
 		return
 	play_for_seconds(sounds[sequence_index][sound_index],interval_time[padrao[sequence_index][sound_index]])
