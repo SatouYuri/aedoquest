@@ -69,12 +69,12 @@ func add_note(var index):
 	if order == padrao[sequence_index]:
 		yield(get_tree().create_timer(0.2), "timeout")
 		delete_all()
-		$UI/AnimationPlayer.play("right")
+		$Lock.seqSolveLock()
 		
 		$Metronomo/Timer.stop()
 		$AudioTimer.stop()
 		sequence_index+=1
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(2), "timeout")
 		playmusic()
 		
 	else:

@@ -1,5 +1,7 @@
 extends Node2D
 
+#Signal
+signal pronto
 #Constantes
 const LAYER_COUNT = 4
 const ROTATION_SPEED = 90
@@ -18,7 +20,9 @@ func _ready():
 func randomLock():
 	for l in get_node("Layers").get_children():
 		randomize()
-		l.rotation_degrees = rand_range(-360, 360.0)
+		l.rotation_degrees = rand_range(20, 340.0)
+		if l.rotation_degrees > 180:
+			l.rotation_degrees-=360
 
 func solveLayer(layer : int):
 	solvedTriggerList[layer] = true
@@ -44,9 +48,9 @@ func isSolved():
 			solvedLocks += 1
 	if solvedLocks == LAYER_COUNT:
 		return true
+		emit_signal("pronto")
 	else:
 		return false
-
 #Código Principal
 func _physics_process(delta):
 	for l in range(solvedTriggerList.size()):
@@ -59,7 +63,9 @@ func _physics_process(delta):
 			else:
 				layer.rotation_degrees = 0
 				solvedList[l] = true
+	
 	if isSolved():
+		
 		for l in get_node("Layers").get_children():
 			if l.modulate.r > 0.0:
 				l.modulate.r -= delta * MODULATION_SPEED
@@ -70,13 +76,3 @@ func _physics_process(delta):
 				l.modulate.b -= delta * MODULATION_SPEED
 			else:
 				l.modulate.b = 0.0
-
-	# NOTA / WIP: Remover depois...
-	if Input.is_action_just_pressed("AQ_1"):
-		seqSolveLock()
-	if Input.is_action_just_pressed("AQ_2"):
-		solveLayer(1)
-	if Input.is_action_just_pressed("AQ_3"):
-		solveLayer(2)
-	if Input.is_action_just_pressed("AQ_4"):
-		solveLayer(3)

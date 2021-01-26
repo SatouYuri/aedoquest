@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://source/sprite/ui/feedbackline.png" type="Texture" id=1]
 [ext_resource path="res://source/sprite/ui/dottedline.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://source/sprite/notas/oitava.png" type="Texture" id=10]
 [ext_resource path="res://source/sprite/notas/quarta.png" type="Texture" id=11]
 [ext_resource path="res://source/scene/minigame/time_guess.tres" type="DynamicFont" id=12]
+[ext_resource path="res://source/scene/object/static/Lock.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "right"
@@ -92,22 +93,6 @@ texture = ExtResource( 3 )
 position = Vector2( 800, 150 )
 scale = Vector2( 2.8, 0.8 )
 texture = ExtResource( 3 )
-
-[node name="icon" type="Sprite" parent="UI"]
-position = Vector2( 211.572, 245.638 )
-scale = Vector2( 4.08682, 4.29539 )
-texture = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="UI/icon"]
-margin_left = -18.2908
-margin_top = -35.4268
-margin_right = 57.7092
-margin_bottom = -21.4268
-rect_scale = Vector2( 0.5, 1.2963 )
-text = "metronomo"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="victory" type="Sprite" parent="UI"]
 visible = false
@@ -289,3 +274,7 @@ one_shot = true
 stream = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="Metronomo"]
+
+[node name="Lock" parent="." instance=ExtResource( 13 )]
+position = Vector2( 196.838, 228.586 )
+scale = Vector2( 0.3, 0.3 )
