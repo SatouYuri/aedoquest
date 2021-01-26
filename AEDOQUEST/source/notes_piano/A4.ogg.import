@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A4.ogg-e75ce917d97b113713c7fda2a690cfd9.oggstr"
+
+[deps]
+
+source_file="res://source/notes_piano/A4.ogg"
+dest_files=[ "res://.import/A4.ogg-e75ce917d97b113713c7fda2a690cfd9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

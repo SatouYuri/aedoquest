@@ -8,15 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "SmartPlayer",
+"language": "GDScript",
+"path": "res://SmartPlayer.gd"
+} ]
 _global_script_class_icons={
-
+"SmartPlayer": ""
 }
 
 [application]
 
 config/name="AEDOQUEST"
-run/main_scene="res://source/scene/minigame/mg_keyslaying.tscn"
+run/main_scene="res://source/scene/minigame/Main.tscn"
 config/icon="res://icon.png"
 
 [display]
