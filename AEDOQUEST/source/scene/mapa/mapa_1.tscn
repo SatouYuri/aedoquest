@@ -110,7 +110,7 @@ scale = Vector2( 0.72605, 0.670177 )
 texture = ExtResource( 1 )
 
 [node name="Torre2" type="Area2D" parent="."]
-position = Vector2( 410.243, 1962.94 )
+position = Vector2( 410.243, 1979.91 )
 
 [node name="icon3" type="Sprite" parent="Torre2"]
 modulate = Color( 0.443137, 0.443137, 0.443137, 0.615686 )
@@ -192,3 +192,9 @@ text = "interact"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Minigame_location" type="Node2D" parent="."]
+position = Vector2( 5249.56, 837.214 )
+
+[node name="Camera2D" type="Camera2D" parent="Minigame_location"]
+anchor_mode = 0

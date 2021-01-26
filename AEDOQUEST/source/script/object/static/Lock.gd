@@ -65,14 +65,18 @@ func _physics_process(delta):
 				solvedList[l] = true
 	
 	if isSolved():
-		
+		var green_flag = false
 		for l in get_node("Layers").get_children():
 			if l.modulate.r > 0.0:
+				green_flag = true
 				l.modulate.r -= delta * MODULATION_SPEED
 			else:
 				l.modulate.r = 0.0
 			
 			if l.modulate.b > 0.0:
+				green_flag = true
 				l.modulate.b -= delta * MODULATION_SPEED
 			else:
 				l.modulate.b = 0.0
+		if not green_flag:
+			emit_signal("pronto")

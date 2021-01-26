@@ -7,6 +7,11 @@ var on_enemy = false
 
 var door_locked = true
 
+var current_minigame_index = -1 
+var game
+
+var minigame_list = [load("res://source/scene/minigame/mg_keyslaying.tscn"),
+					load("res://source/scene/minigame/time_guess.tscn")]
 func _ready():
 	$CanvasLayer/Left.connect("button_down", $Player,"press_left")
 	$CanvasLayer/Left.connect("button_up", $Player,"unpress_left")
@@ -22,7 +27,38 @@ func _ready():
 	$Enemy.connect("body_exited",self,"body_leave_enemy")
 	$CanvasLayer/inter.connect("pressed",self,"interact")
 	pass
-
+func enter_minigame(minigame):
+	game = minigame_list[minigame].instance()
+	current_minigame_index = minigame
+	for child in $CanvasLayer.get_children():
+		child.disabled = true
+		child.hide()
+	
+	$Minigame_location.add_child(game)
+	game.connect("minigame_result",self,"exit_minigame")
+	$Player/Camera2D.current = false
+	$Minigame_location/Camera2D.current = true
+	
+	pass
+func exit_minigame(result):
+	if result == false:
+		game.queue_free()
+		game = minigame_list[current_minigame_index].instance()
+		$Minigame_location.add_child(game)
+		game.connect("minigame_result",self,"exit_minigame")
+		$Player/Camera2D.current = false
+		$Minigame_location/Camera2D.current = true
+		return
+	game.queue_free()
+	if current_minigame_index == 1:
+		door_locked = false
+	for child in $CanvasLayer.get_children():
+		child.disabled = false
+		child.show()
+	$Minigame_location/Camera2D.current = false
+	$Player/Camera2D.current = true
+	button_check()
+	pass
 func button_check():
 	if on_door_1 or on_door_2 or on_npc or on_enemy:
 		$CanvasLayer/inter.disabled = false
@@ -30,10 +66,13 @@ func button_check():
 		$CanvasLayer/inter.disabled = true
 func interact():
 	if on_door_1:
-		$Player.position = $Torre2.position
-		on_door_1 = false
-		on_door_2 = true
-		button_check()
+		if door_locked:
+			enter_minigame(1)
+		else:
+			$Player.position = $Torre2.position
+			on_door_1 = false
+			on_door_2 = true
+			button_check()
 	elif on_door_2:
 		$Player.position = $Torre.position
 		on_door_2 = false
@@ -42,6 +81,7 @@ func interact():
 	elif on_npc:
 		print("oi")
 	elif on_enemy:
+		enter_minigame(0)
 		print("tchau")
 
 func body_close_npc(body):

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal minigame_result(result)
+
 var bpm = 60
 var padrao = [[0],[3,3,2,2,2],[2,2,1],[3,3,3,3,2,3,3]]
 var is_playing = false
@@ -26,11 +28,18 @@ func _ready():
 	$AudioTimer.connect("timeout", self,"next")
 	$Metronomo/Timer.connect("timeout",$Metronomo,"play")
 	yield(get_tree().create_timer(1),"timeout")
+	$Lock.connect("pronto",self,"pronto")
 	playmusic()
+
+func pronto():
+	$Lock.disconnect("pronto",self,"pronto")
+	yield(get_tree().create_timer(2), "timeout")
+	emit_signal("minigame_result", true)
+	pass
 
 func playmusic():
 	if sequence_index == padrao.size():
-			get_tree().change_scene("res://source/scene/minigame/Main.tscn")
+			return
 			pass
 	elif not is_playing:
 		sound_index = 0

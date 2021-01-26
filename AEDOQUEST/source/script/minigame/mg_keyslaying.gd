@@ -1,5 +1,6 @@
 extends Node2D
 
+signal minigame_result(result)
 #Constantes
 const X_AXIS_START = 220 #TODO: Deixar essa constante menos hardcoded...
 const X_AXIS_END = 1240 #TODO: Deixar essa constante menos hardcoded...
@@ -125,13 +126,13 @@ func earnCharge(chargePercentage : float):
 		$Pentagram/Clef/ClefShade.value += chargePercentage
 	else:
 		$Pentagram/Clef/ClefShade.value = 100.0
-		get_tree().change_scene("res://source/scene/minigame/Main.tscn")
+		emit_signal("minigame_result",true)
 
 func takeDamage(damagePercentage : float):
 	if $Pentagram/Clef/Clef.value > 0:
 		$Pentagram/Clef/Clef.value -= damagePercentage
 	if $Pentagram/Clef/Clef.value <= 0:
-		get_tree().change_scene("res://source/scene/minigame/mg_keyslaying.tscn")
+		emit_signal("minigame_result",false)
 
 func clearShots():
 	for s in get_children():
