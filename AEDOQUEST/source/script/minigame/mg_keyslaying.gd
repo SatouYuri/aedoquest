@@ -125,6 +125,7 @@ func earnCharge(chargePercentage : float):
 		$Pentagram/Clef/ClefShade.value += chargePercentage
 	else:
 		$Pentagram/Clef/ClefShade.value = 100.0
+		get_tree().change_scene("res://source/scene/minigame/Main.tscn")
 
 func takeDamage(damagePercentage : float):
 	if $Pentagram/Clef/Clef.value > 0:

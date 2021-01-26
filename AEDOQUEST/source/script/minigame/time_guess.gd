@@ -30,7 +30,7 @@ func _ready():
 
 func playmusic():
 	if sequence_index == padrao.size():
-			get_tree().quit()
+			get_tree().change_scene("res://source/scene/minigame/Main.tscn")
 			pass
 	elif not is_playing:
 		sound_index = 0

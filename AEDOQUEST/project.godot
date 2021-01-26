@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="AEDOQUEST"
-run/main_scene="res://source/scene/minigame/mg_keyslaying.tscn"
+run/main_scene="res://source/scene/minigame/Main.tscn"
 config/icon="res://icon.png"
 
 [display]
