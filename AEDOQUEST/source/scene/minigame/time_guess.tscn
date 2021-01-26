@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://source/sprite/ui/feedbackline.png" type="Texture" id=1]
 [ext_resource path="res://source/sprite/ui/dottedline.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://source/met/tempo.wav" type="AudioStream" id=6]
 [ext_resource path="res://source/script/minigame/time_guess.gd" type="Script" id=7]
+[ext_resource path="res://source/sprite/notas/meia.png" type="Texture" id=8]
+[ext_resource path="res://source/sprite/notas/inteira.png" type="Texture" id=9]
+[ext_resource path="res://source/sprite/notas/oitava.png" type="Texture" id=10]
+[ext_resource path="res://source/sprite/notas/quarta.png" type="Texture" id=11]
+[ext_resource path="res://source/scene/minigame/time_guess.tres" type="DynamicFont" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "right"
@@ -51,10 +56,6 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=3]
 size = 40
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 80
 font_data = ExtResource( 4 )
 
 [node name="Time_guess" type="Node2D"]
@@ -170,8 +171,23 @@ margin_left = 10.0
 margin_right = 190.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "1"
+custom_fonts/font = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inteira" type="Sprite" parent="Notas/b1"]
+position = Vector2( 90.5033, 127.813 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Notas/b1"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 111.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 12 )
+text = "1/1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -181,7 +197,22 @@ margin_left = 210.0
 margin_right = 390.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="meia" type="Sprite" parent="Notas/b2"]
+position = Vector2( 120, 100 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+
+[node name="Label2" type="Label" parent="Notas/b2"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 111.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 12 )
 text = "1/2"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -192,7 +223,22 @@ margin_left = 410.0
 margin_right = 590.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quarta" type="Sprite" parent="Notas/b3"]
+position = Vector2( 120, 100 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 11 )
+
+[node name="Label3" type="Label" parent="Notas/b3"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 111.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 12 )
 text = "1/4"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -203,7 +249,22 @@ margin_left = 610.0
 margin_right = 790.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="oitava" type="Sprite" parent="Notas/b4"]
+position = Vector2( 120, 100 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="Label4" type="Label" parent="Notas/b4"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 111.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 12 )
 text = "1/8"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -214,8 +275,8 @@ margin_left = 810.0
 margin_right = 990.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 180, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "back"
+custom_fonts/font = ExtResource( 12 )
+text = "<<"
 __meta__ = {
 "_edit_use_anchors_": false
 }

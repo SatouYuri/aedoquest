@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[ext_resource path="res://source/sprite/notas/oitava.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.101961, 1, 0, 1 )
 
 [node name="eighth" type="Panel"]
@@ -8,4 +10,12 @@ margin_left = 600.0
 margin_right = 700.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 100, 200 )
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="oitava" type="Sprite" parent="."]
+position = Vector2( 50, 100 )
+scale = Vector2( 0.4, 0.5 )
+texture = ExtResource( 1 )
