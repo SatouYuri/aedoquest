@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://source/scene/Player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://source/sprite/background/castledoors.png" type="Texture" id=8]
 [ext_resource path="res://source/sprite/character/megumin.png" type="Texture" id=9]
 [ext_resource path="res://source/sprite/background/parede.jpg" type="Texture" id=10]
+[ext_resource path="res://source/sprite/ui/speech-bubble-png.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1912.45, 10 )
@@ -44,7 +45,7 @@ shape = SubResource( 2 )
 
 [node name="grama" type="Sprite" parent="Chao"]
 position = Vector2( 650.905, -808.143 )
-scale = Vector2( 4, 4 )
+scale = Vector2( 7.16914, 5.41289 )
 texture = ExtResource( 6 )
 
 [node name="icon" type="Sprite" parent="Chao"]
@@ -65,10 +66,9 @@ texture = ExtResource( 5 )
 flip_h = true
 
 [node name="diag" type="Sprite" parent="NPC"]
-visible = false
-position = Vector2( 48.8134, -116.717 )
-scale = Vector2( 0.626853, 0.660375 )
-texture = ExtResource( 1 )
+position = Vector2( 82.4863, -150.391 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 11 )
 
 [node name="Torre" type="Area2D" parent="."]
 position = Vector2( 1673.26, 593.976 )
@@ -89,10 +89,9 @@ position = Vector2( 11.9865, -2.99658 )
 shape = SubResource( 4 )
 
 [node name="diag" type="Sprite" parent="Torre"]
-visible = false
 position = Vector2( 79.08, -122.167 )
-scale = Vector2( 0.72605, 0.670177 )
-texture = ExtResource( 1 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 11 )
 
 [node name="Torre2" type="Area2D" parent="."]
 position = Vector2( 410.243, 1979.91 )
@@ -113,8 +112,8 @@ shape = SubResource( 4 )
 [node name="diag" type="Sprite" parent="Torre2"]
 visible = false
 position = Vector2( 79.0799, -122.167 )
-scale = Vector2( 0.72605, 0.670177 )
-texture = ExtResource( 1 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 11 )
 
 [node name="Chao2" type="StaticBody2D" parent="."]
 position = Vector2( 632.04, 2094.16 )
@@ -158,9 +157,9 @@ texture = ExtResource( 9 )
 
 [node name="diag" type="Sprite" parent="Enemy"]
 visible = false
-position = Vector2( 48.8134, -116.717 )
-scale = Vector2( 0.626853, 0.660375 )
-texture = ExtResource( 1 )
+position = Vector2( 81.8789, -130.258 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
