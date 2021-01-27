@@ -152,7 +152,8 @@ position = Vector2( 1941.71, 1982.01 )
 shape = SubResource( 3 )
 
 [node name="megumin" type="Sprite" parent="Enemy"]
-position = Vector2( 32.9911, -75.4565 )
+position = Vector2( 13.192, -21.7164 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 9 )
 
 [node name="diag" type="Sprite" parent="Enemy"]
