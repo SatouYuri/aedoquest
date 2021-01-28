@@ -6,6 +6,13 @@ var on_npc = false
 var on_enemy = false
 
 var door_locked = true
+var enemy_defeated = false
+
+var talk_dict = {}
+
+var current_talk = []
+var talk_index = 0
+var talking = false
 
 var current_minigame_index = -1 
 var game
@@ -13,6 +20,17 @@ var game
 var minigame_list = [load("res://source/scene/minigame/mg_keyslaying.tscn"),
 					load("res://source/scene/minigame/time_guess.tscn")]
 func _ready():
+	var file = File.new()
+	file.open("res://source/scene/mapa/falas.json", file.READ)
+	var text = file.get_as_text()
+	print(text)
+	var json_res = JSON.parse(text)
+	file.close()
+	if json_res.error == OK:
+		talk_dict = json_res.result
+		print(talk_dict)
+	else:
+		print(json_res.error)
 	$CanvasLayer/Left.connect("button_down", $Player,"press_left")
 	$CanvasLayer/Left.connect("button_up", $Player,"unpress_left")
 	$CanvasLayer/Right.connect("button_down", $Player,"press_right")
@@ -27,6 +45,39 @@ func _ready():
 	$Enemy.connect("body_exited",self,"body_leave_enemy")
 	$CanvasLayer/inter.connect("pressed",self,"interact")
 	pass
+	
+func falando():
+	talking = true
+	disable_canvas()
+	$CanvasLayer/inter.disabled = false
+	$CanvasLayer/Textbox.show()
+	$CanvasLayer/inter.show()
+	talk_index = 0
+	prox_fala()
+
+func parou_de_falar():
+	enable_canvas()
+	talking = false
+	$CanvasLayer/Textbox.hide()
+	pass
+func prox_fala():
+	if talk_index == current_talk.size():
+		parou_de_falar()
+		return
+	var texto = current_talk[talk_index]
+	var nome = texto[0]
+	if nome == "com":
+		if texto[1] == "minigame1":
+			parou_de_falar()
+			enter_minigame(0)
+		elif texto[1] == "vazar":
+			parou_de_falar()
+			$Enemy/AnimationPlayer.play("vazar")
+	else:
+		var fala = texto[1]
+		$CanvasLayer/Textbox/Text.text = fala
+		$CanvasLayer/Textbox/Name.text = nome
+		talk_index+=1
 
 func disable_canvas():
 	$CanvasLayer/Left.disabled = true
@@ -38,7 +89,7 @@ func disable_canvas():
 func enable_canvas():
 	$CanvasLayer/Left.disabled = false
 	$CanvasLayer/Right.disabled = false
-	$CanvasLayer/inter.disabled = false
+	button_check()
 	for child in $CanvasLayer.get_children():
 		child.show()
 	$CanvasLayer/Textbox.hide()
@@ -64,12 +115,17 @@ func exit_minigame(result):
 		$Minigame_location/Camera2D.current = true
 		return
 	game.queue_free()
-	if current_minigame_index == 1:
-		door_locked = false
 	enable_canvas()
 	$Minigame_location/Camera2D.current = false
 	$Player/Camera2D.current = true
 	button_check()
+	if current_minigame_index == 1:
+		door_locked = false
+	if current_minigame_index == 0:
+		enemy_defeated = true
+		current_talk = talk_dict["Bruxa"]["depois"]
+		falando()
+	
 	pass
 func button_check():
 	if on_door_1 or on_door_2 or on_npc or on_enemy:
@@ -77,24 +133,35 @@ func button_check():
 	else:
 		$CanvasLayer/inter.disabled = true
 func interact():
-	if on_door_1:
-		if door_locked:
-			enter_minigame(1)
-		else:
-			$Player.position = $Torre2.position
-			on_door_1 = false
-			on_door_2 = true
+	if talking:
+		prox_fala()
+		pass
+	else:
+		if on_door_1:
+			if door_locked:
+				enter_minigame(1)
+			else:
+				$Player.position = $Torre2.position
+				on_door_1 = false
+				on_door_2 = true
+				button_check()
+		elif on_door_2:
+			$Player.position = $Torre.position
+			on_door_2 = false
+			on_door_1 = true
 			button_check()
-	elif on_door_2:
-		$Player.position = $Torre.position
-		on_door_2 = false
-		on_door_1 = true
-		button_check()
-	elif on_npc:
-		print("oi")
-	elif on_enemy:
-		enter_minigame(0)
-		print("tchau")
+		elif on_npc:
+			if door_locked:
+				current_talk = talk_dict["Rapaz"]["antes"]
+				falando()
+			else:
+				current_talk = talk_dict["Rapaz"]["porta"]
+				falando()
+		elif on_enemy:
+			if not enemy_defeated:
+				current_talk = talk_dict["Bruxa"]["antes"]
+				falando()
+			print("tchau")
 
 func body_close_npc(body):
 	if body.is_in_group("Player"):

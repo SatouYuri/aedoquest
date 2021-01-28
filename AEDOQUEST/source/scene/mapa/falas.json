@@ -1,0 +1,11 @@
+{
+"Rapaz": {
+    "antes": [["Rapaz", "me ajuda"], ["Bardo", "beleza"]],
+    "porta": [["Rapaz", "você abriu a porta"]],
+    "depois": [["Bardo", "te ajudei"], ["Rapaz", "mt obg cara"]]
+},
+"Bruxa": {
+    "antes": [["Bruxa", "quem é vc véi"], ["Bardo", "o bardo"], ["Bruxa", "lgl, pode ir embora pfvr?"],["Bardo", "n"], ["com", "minigame1"]],
+    "depois": [["Bruxa", "sacanage véi, vo embora"], ["com", "vazar"]]
+}
+}
