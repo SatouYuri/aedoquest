@@ -7,6 +7,7 @@ var on_enemy = false
 
 var door_locked = true
 var enemy_defeated = false
+var entered_tower = false
 
 var talk_dict = {}
 
@@ -61,6 +62,9 @@ func parou_de_falar():
 	$CanvasLayer/Textbox.hide()
 	pass
 func prox_fala():
+	$CanvasLayer/inter.disabled = false
+	$CanvasLayer/Textbox.show()
+	$CanvasLayer/inter.show()
 	if talk_index == current_talk.size():
 		parou_de_falar()
 		return
@@ -76,6 +80,24 @@ func prox_fala():
 		elif texto[1] == "enabledoor":
 			$Torre.monitorable = true
 			$Torre.monitoring = true
+			talk_index+=1
+			prox_fala()
+		elif texto[1] == "player_look_left":
+			$Player/AQProtag.flip_h = true
+			talk_index+=1
+			prox_fala()
+		elif texto[1] == "enter":
+			talk_index+=1
+			$Camera_NPC/AnimationPlayer.play("Entrar")
+			
+		elif texto[1] == "go_to_tower":
+			entered_tower = true
+			$Player/Camera2D.current = true
+			$Player.position = $Torre2.position
+			$NPC/AQNPC2.position.x = 0
+			on_door_1 = false
+			on_door_2 = true
+			button_check()
 			talk_index+=1
 			prox_fala()
 	else:
@@ -126,6 +148,13 @@ func exit_minigame(result):
 	button_check()
 	if current_minigame_index == 1:
 		door_locked = false
+		$NPC/AQNPC2.flip_h = false
+		$NPC/AQNPC2.position.x = 350
+		$Player.position.x = 1600
+		$Player/Camera2D.current = false
+		$Camera_NPC.current = true
+		current_talk = talk_dict["Rapaz"]["porta"]
+		falando()
 	if current_minigame_index == 0:
 		enemy_defeated = true
 		current_talk = talk_dict["Bruxa"]["depois"]
@@ -156,16 +185,28 @@ func interact():
 			on_door_1 = true
 			button_check()
 		elif on_npc:
+			if $Player.position.x > $NPC.position.x:
+				$NPC/AQNPC2.flip_h = false
+				$Player.sprite_left()
+			else:
+				$NPC/AQNPC2.flip_h = true
+				$Player.sprite_right()
 			if enemy_defeated:
 				current_talk = talk_dict["Rapaz"]["depois"]
+				falando()
+			elif entered_tower:
+				current_talk = talk_dict["Rapaz"]["entrou"]
 				falando()
 			elif door_locked:
 				current_talk = talk_dict["Rapaz"]["antes"]
 				falando()
-			else:
-				current_talk = talk_dict["Rapaz"]["porta"]
-				falando()
 		elif on_enemy:
+			if $Player.position.x > $Enemy.position.x:
+				$Enemy/megumin.flip_h = false
+				$Player.sprite_left()
+			else:
+				$Enemy/megumin.flip_h = true
+				$Player.sprite_right()
 			if not enemy_defeated:
 				current_talk = talk_dict["Bruxa"]["antes"]
 				falando()
