@@ -3,8 +3,8 @@
     "antes": [["Bardo","Olá! Tudo certo por aqui?"],["Rapaz", "Na verdade não, nem um pouco."], ["Bardo", "O que houve?"],
                 ["Rapaz","Sabe a bruxa que mora nessa torre?"],["Rapaz", "Ela roubou minhas coisas, e eu não consigo entrar..."],["Rapaz","Aquela porta não parece normal."],
                 ["Bardo","Entendi... Vou dar uma olhada!"],["com","enabledoor"]],
-    "porta": [["Rapaz", "você abriu a porta"]],
-    "depois": [["Bardo", "te ajudei"], ["Rapaz", "mt obg cara"]]
+    "porta": [["Rapaz", "Nossa, como você fez pra abrir?"],["Bardo", "Estava enfeitiçada mesmo, igual você disse"],["Bardo","Eu vou entrar lá para conversar com a bruxa, tá bom?"], ["Rapaz", "Ok... Tome cuidado!"]],
+    "depois": [["Rapaz", "Nossa, você conseguiu meus itens de volta! Muito obrigado!"], ["Bardo", "De nada. Até mais!"]]
 },
 "Bruxa": {
     "antes": [["Bruxa", "Ora, mas quem é você?"], ["Bardo", "Tem um rapaz lá fora querendo falar com você,"],["Bardo", "mas ele não estava conseguindo entrar por causa da fechadura mágica."],
