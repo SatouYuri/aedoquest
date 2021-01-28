@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://source/scene/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,21 @@
 [ext_resource path="res://source/scene/mapa/mapa_1.gd" type="Script" id=4]
 [ext_resource path="res://source/sprite/character/AQNPC2.png" type="Texture" id=5]
 [ext_resource path="res://source/sprite/background/grama.png" type="Texture" id=6]
-[ext_resource path="res://source/sprite/background/Tower_damage1.png" type="Texture" id=7]
-[ext_resource path="res://source/sprite/background/castledoors.png" type="Texture" id=8]
-[ext_resource path="res://source/sprite/character/megumin.png" type="Texture" id=9]
+[ext_resource path="res://source/sprite/background/tower.png" type="Texture" id=7]
+[ext_resource path="res://source/sprite/character/CRIMSONWITCH.png" type="Texture" id=8]
 [ext_resource path="res://source/sprite/background/parede.jpg" type="Texture" id=10]
-[ext_resource path="res://source/sprite/ui/speech-bubble-png.png" type="Texture" id=11]
+[ext_resource path="res://source/sprite/background/tower_entrance.png" type="Texture" id=12]
+[ext_resource path="res://source/sprite/background/plains.png" type="Texture" id=13]
+[ext_resource path="res://source/sprite/background/skies.png" type="Texture" id=14]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon6.png" type="Texture" id=15]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon5.png" type="Texture" id=16]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon1.png" type="Texture" id=17]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon7.png" type="Texture" id=18]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon3.png" type="Texture" id=19]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon4.png" type="Texture" id=20]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon9.png" type="Texture" id=21]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon2.png" type="Texture" id=22]
+[ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon8.png" type="Texture" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1912.45, 10 )
@@ -21,6 +31,14 @@ extents = Vector2( 17.8958, 478.592 )
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 116.625
 height = 120.074
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 116.625
@@ -71,17 +89,32 @@ position = Vector2( 1909.51, -312.716 )
 shape = SubResource( 2 )
 
 [node name="grama" type="Sprite" parent="Chao"]
-position = Vector2( 650.905, -808.143 )
+visible = false
+position = Vector2( 652.905, -808.143 )
 scale = Vector2( 7.16914, 5.41289 )
 texture = ExtResource( 6 )
 
-[node name="icon" type="Sprite" parent="Chao"]
-position = Vector2( 650.592, 21.5576 )
-scale = Vector2( 39.5162, 1 )
-texture = ExtResource( 1 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Chao"]
+
+[node name="Skies" type="ParallaxLayer" parent="Chao/ParallaxBackground"]
+motion_mirroring = Vector2( 1280, 0 )
+
+[node name="Sprite" type="Sprite" parent="Chao/ParallaxBackground/Skies"]
+modulate = Color( 0.188235, 0.505882, 1, 1 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Plains" type="ParallaxLayer" parent="Chao/ParallaxBackground"]
+motion_mirroring = Vector2( 1280, 0 )
+
+[node name="Sprite" type="Sprite" parent="Chao/ParallaxBackground/Plains"]
+position = Vector2( 641, 428 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
 
 [node name="NPC" type="Area2D" parent="."]
-position = Vector2( 1073.54, 606.575 )
+position = Vector2( 1073.54, 604.575 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
 shape = SubResource( 3 )
@@ -92,11 +125,13 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 5 )
 flip_h = true
 
-[node name="diag" type="Sprite" parent="NPC"]
+[node name="diag" type="AnimatedSprite" parent="NPC"]
 visible = false
-position = Vector2( 82.4863, -150.391 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 11 )
+position = Vector2( 2.45996, -163.575 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 6
+playing = true
 
 [node name="Torre" type="Area2D" parent="."]
 position = Vector2( 1673.26, 593.976 )
@@ -104,25 +139,27 @@ monitoring = false
 monitorable = false
 
 [node name="Tower_damage1" type="Sprite" parent="Torre"]
-position = Vector2( 240.504, -342.028 )
-scale = Vector2( 6, 6 )
+position = Vector2( 19.5612, -526.355 )
+scale = Vector2( 5, 5 )
 texture = ExtResource( 7 )
 flip_h = true
 
 [node name="castledoors" type="Sprite" parent="Torre"]
-position = Vector2( 17.1128, -61.5154 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 8 )
+position = Vector2( 20.1128, -16.5154 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torre"]
-position = Vector2( 11.9865, -2.99658 )
+position = Vector2( 19.74, 28.024 )
 shape = SubResource( 4 )
 
-[node name="diag" type="Sprite" parent="Torre"]
+[node name="diag" type="AnimatedSprite" parent="Torre"]
 visible = false
-position = Vector2( 79.08, -122.167 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 11 )
+position = Vector2( 17.74, -191.976 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 6
+playing = true
 
 [node name="Torre2" type="Area2D" parent="."]
 position = Vector2( 410.243, 1979.91 )
@@ -132,19 +169,21 @@ position = Vector2( 900.945, 249.761 )
 scale = Vector2( 6, 6 )
 texture = ExtResource( 10 )
 
-[node name="castledoors2" type="Sprite" parent="Torre2"]
-position = Vector2( 6.72717, -84.0896 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 8 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torre2"]
 shape = SubResource( 4 )
 
-[node name="diag" type="Sprite" parent="Torre2"]
+[node name="castledoors2" type="Sprite" parent="Torre2"]
+position = Vector2( -0.243042, -25.91 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 12 )
+
+[node name="diag" type="AnimatedSprite" parent="Torre2"]
 visible = false
-position = Vector2( 79.0799, -122.167 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 11 )
+position = Vector2( -2.24301, -196.91 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 5
+playing = true
 
 [node name="Chao2" type="StaticBody2D" parent="."]
 position = Vector2( 632.04, 2094.16 )
@@ -182,15 +221,17 @@ position = Vector2( 1941.71, 1982.01 )
 shape = SubResource( 3 )
 
 [node name="megumin" type="Sprite" parent="Enemy"]
-position = Vector2( 13.192, -21.7164 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 9 )
+position = Vector2( -0.709961, -24.01 )
+scale = Vector2( 5.25, 5.25 )
+texture = ExtResource( 8 )
+flip_h = true
 
-[node name="diag" type="Sprite" parent="Enemy"]
-visible = false
-position = Vector2( 81.8789, -130.258 )
-scale = Vector2( 0.05, 0.05 )
-texture = ExtResource( 11 )
+[node name="diag" type="AnimatedSprite" parent="Enemy"]
+position = Vector2( -4.70996, -190.01 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+frame = 5
+playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
 anims/vazar = SubResource( 5 )
