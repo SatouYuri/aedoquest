@@ -156,7 +156,10 @@ func interact():
 			on_door_1 = true
 			button_check()
 		elif on_npc:
-			if door_locked:
+			if enemy_defeated:
+				current_talk = talk_dict["Rapaz"]["depois"]
+				falando()
+			elif door_locked:
 				current_talk = talk_dict["Rapaz"]["antes"]
 				falando()
 			else:
