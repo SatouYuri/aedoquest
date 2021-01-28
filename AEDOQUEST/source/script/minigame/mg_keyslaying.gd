@@ -52,8 +52,7 @@ func _ready():
 	gradPlayerList =   [false, false, false, false, false, false, false, false, false]
 	gradEnemyList =    [false, false, false, false, false, false, false, false, false]
 	gradFeedbackList = [false, false, false, false, false, false, false, false, false]
-
-#Funções
+	
 func getConstByLine(line : String):
 	if line == 'E':
 		return E
@@ -249,3 +248,7 @@ func _on_TEST_FREQUENCY_timeout():
 	else:
 		testChartPos = -1
 	testChartPos += 1
+
+
+func debug():
+	emit_signal("minigame_result",true)

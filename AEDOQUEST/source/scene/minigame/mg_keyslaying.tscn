@@ -324,4 +324,15 @@ texture = ExtResource( 7 )
 [node name="TEST_FREQUENCY" type="Timer" parent="Timers"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 680.0
+margin_top = 24.0
+margin_right = 879.0
+margin_bottom = 65.0
+text = "DEBUG"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Timers/TEST_FREQUENCY" to="." method="_on_TEST_FREQUENCY_timeout"]
+[connection signal="pressed" from="Button" to="." method="debug"]

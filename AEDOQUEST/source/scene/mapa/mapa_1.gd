@@ -92,6 +92,7 @@ func prox_fala():
 			
 		elif texto[1] == "go_to_tower":
 			entered_tower = true
+			$Player.show()
 			$Player/Camera2D.current = true
 			$Player.position = $Torre2.position
 			$NPC/AQNPC2.position.x = 0
@@ -100,6 +101,14 @@ func prox_fala():
 			button_check()
 			talk_index+=1
 			prox_fala()
+		elif texto[1] == "player_leave":
+			talk_index+=1
+			$Camera_NPC/AnimationPlayer.play("Sair")
+			pass
+		elif texto[1] == "tuba":
+			$NPC/AQNPC2.hide()
+			$NPC/AQNPC1_CURSE3.show()
+			talk_index+=1
 	else:
 		var fala = texto[1]
 		$CanvasLayer/Textbox/Text.text = fala
@@ -132,6 +141,9 @@ func enter_minigame(minigame):
 	$Minigame_location/Camera2D.current = true
 	
 	pass
+func voltou():
+	current_talk = talk_dict["Rapaz"]["depois"]
+	falando()
 func exit_minigame(result):
 	if result == false:
 		game.queue_free()
@@ -157,12 +169,16 @@ func exit_minigame(result):
 		falando()
 	if current_minigame_index == 0:
 		enemy_defeated = true
+		$Player.sprite_right()
+		$Enemy/megumin.flip_h = true
+		$Player.position.x = 1653.578
+		$CanvasLayer/inter.disabled = false
 		current_talk = talk_dict["Bruxa"]["depois"]
 		falando()
 	
 	pass
 func button_check():
-	if on_door_1 or on_door_2 or on_npc or on_enemy:
+	if talking or on_door_1 or on_door_2 or on_npc or on_enemy:
 		$CanvasLayer/inter.disabled = false
 	else:
 		$CanvasLayer/inter.disabled = true
@@ -180,9 +196,17 @@ func interact():
 				on_door_2 = true
 				button_check()
 		elif on_door_2:
-			$Player.position = $Torre.position
-			on_door_2 = false
-			on_door_1 = true
+			if enemy_defeated:
+				$Camera_NPC.current = true
+				$Camera_NPC.position.x = $NPC.position.x
+				disable_canvas()
+				$Torre.monitorable = false
+				$Torre.monitoring = false
+				$Camera_NPC/AnimationPlayer.play("Voltar")
+			else:
+				$Player.position = $Torre.position
+				on_door_2 = false
+				on_door_1 = true
 			button_check()
 		elif on_npc:
 			if $Player.position.x > $NPC.position.x:
@@ -191,10 +215,7 @@ func interact():
 			else:
 				$NPC/AQNPC2.flip_h = true
 				$Player.sprite_right()
-			if enemy_defeated:
-				current_talk = talk_dict["Rapaz"]["depois"]
-				falando()
-			elif entered_tower:
+			if entered_tower:
 				current_talk = talk_dict["Rapaz"]["entrou"]
 				falando()
 			elif door_locked:
