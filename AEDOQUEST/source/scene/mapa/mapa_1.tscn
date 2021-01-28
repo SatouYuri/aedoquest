@@ -100,6 +100,8 @@ texture = ExtResource( 11 )
 
 [node name="Torre" type="Area2D" parent="."]
 position = Vector2( 1673.26, 593.976 )
+monitoring = false
+monitorable = false
 
 [node name="Tower_damage1" type="Sprite" parent="Torre"]
 position = Vector2( 240.504, -342.028 )

@@ -73,6 +73,11 @@ func prox_fala():
 		elif texto[1] == "vazar":
 			parou_de_falar()
 			$Enemy/AnimationPlayer.play("vazar")
+		elif texto[1] == "enabledoor":
+			$Torre.monitorable = true
+			$Torre.monitoring = true
+			talk_index+=1
+			prox_fala()
 	else:
 		var fala = texto[1]
 		$CanvasLayer/Textbox/Text.text = fala

@@ -1,6 +1,6 @@
 {
 "Rapaz": {
-    "antes": [["Rapaz", "me ajuda"], ["Bardo", "beleza"]],
+    "antes": [["Rapaz", "me ajuda"], ["Bardo", "beleza"], ["com","enabledoor"]],
     "porta": [["Rapaz", "você abriu a porta"]],
     "depois": [["Bardo", "te ajudei"], ["Rapaz", "mt obg cara"]]
 },
