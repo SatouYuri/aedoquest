@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -140 )
+position = Vector2( 0, -200 )
 current = true
 
 [node name="AQProtag" type="Sprite" parent="."]

@@ -27,12 +27,26 @@ func _ready():
 	$Enemy.connect("body_exited",self,"body_leave_enemy")
 	$CanvasLayer/inter.connect("pressed",self,"interact")
 	pass
+
+func disable_canvas():
+	$CanvasLayer/Left.disabled = true
+	$CanvasLayer/Right.disabled = true
+	$CanvasLayer/inter.disabled = true
+	for child in $CanvasLayer.get_children():
+		child.hide()
+		
+func enable_canvas():
+	$CanvasLayer/Left.disabled = false
+	$CanvasLayer/Right.disabled = false
+	$CanvasLayer/inter.disabled = false
+	for child in $CanvasLayer.get_children():
+		child.show()
+	$CanvasLayer/Textbox.hide()
+	
 func enter_minigame(minigame):
 	game = minigame_list[minigame].instance()
 	current_minigame_index = minigame
-	for child in $CanvasLayer.get_children():
-		child.disabled = true
-		child.hide()
+	disable_canvas()
 	
 	$Minigame_location.add_child(game)
 	game.connect("minigame_result",self,"exit_minigame")
@@ -52,9 +66,7 @@ func exit_minigame(result):
 	game.queue_free()
 	if current_minigame_index == 1:
 		door_locked = false
-	for child in $CanvasLayer.get_children():
-		child.disabled = false
-		child.show()
+	enable_canvas()
 	$Minigame_location/Camera2D.current = false
 	$Player/Camera2D.current = true
 	button_check()
