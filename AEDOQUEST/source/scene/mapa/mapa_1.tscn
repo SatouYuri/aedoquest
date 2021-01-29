@@ -237,7 +237,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "Sair"
 tracks/0/type = "method"
 tracks/0/path = NodePath("../Player")
@@ -280,8 +280,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Voltar"
+[sub_resource type="Animation" id=9]
 length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Player:position")
@@ -441,7 +440,6 @@ visible = false
 position = Vector2( 2.45996, -163.575 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 7
 playing = true
 
 [node name="Torre" type="Area2D" parent="."]
@@ -469,7 +467,6 @@ visible = false
 position = Vector2( 17.74, -191.976 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 7
 playing = true
 
 [node name="Torre2" type="Area2D" parent="."]
@@ -493,7 +490,7 @@ visible = false
 position = Vector2( -2.24301, -196.91 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="Chao2" type="StaticBody2D" parent="."]
@@ -541,7 +538,7 @@ visible = false
 position = Vector2( -4.70996, -190.01 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 6
+frame = 8
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
@@ -576,13 +573,13 @@ __meta__ = {
 }
 
 [node name="inter" type="Button" parent="CanvasLayer"]
-margin_left = 900.0
+margin_left = 830.0
 margin_top = 600.0
-margin_right = 1192.0
+margin_right = 1180.0
 margin_bottom = 700.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
-text = "interact"
+text = "interagir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -647,8 +644,8 @@ position = Vector2( 1469.93, 358.753 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera_NPC"]
 anims/Entrar = SubResource( 7 )
-anims/Sair = SubResource( 9 )
-anims/Voltar = SubResource( 8 )
+anims/Sair = SubResource( 8 )
+anims/Voltar = SubResource( 9 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 1653.17, 2083.74 )

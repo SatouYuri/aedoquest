@@ -108,6 +108,8 @@ func prox_fala():
 			$NPC/AQNPC2.hide()
 			$NPC/AQNPC1_CURSE3.show()
 			talk_index+=1
+		elif texto[1] == "fim":
+			get_tree().change_scene("res://source/scene/Menus/End.tscn")
 	else:
 		var fala = texto[1]
 		var color
