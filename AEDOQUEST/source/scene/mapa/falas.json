@@ -20,6 +20,6 @@
                 ["Bardo","Será que não é melhor vocês conversarem pra resolver isso?"],["Bruxa","E será que não é melhor você não se meter em assuntos alheios?"],
                 ["Bardo","Só estou tentando ajudar, ele parece preocupado."],["Bardo","Não pode devolver os pertences dele?"],["Bruxa","Você está me incomodando. Vá embora!"],
                 ["Bardo","Não irei até que você devolva o que roubou!"],["Bruxa","Me parece que preciso te colocar pra fora à força..."],["com", "minigame1"]],
-    "depois": [["Bruxa", "Raios! Se eu tivesse tempo para me preparar..."], ["Bruxa","Escute aqui, na próxima vez que nos enfrentarmos não será tão fácil!"], ["com", "vazar"]]
+    "depois": [["Bruxa", "Raios! Se eu tivesse tempo para me preparar..."], ["Bruxa","Escute aqui! Na próxima vez que nos enfrentarmos não será tão fácil!"], ["com", "vazar"]]
 }
 }
