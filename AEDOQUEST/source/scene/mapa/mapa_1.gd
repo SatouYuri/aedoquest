@@ -24,12 +24,11 @@ func _ready():
 	var file = File.new()
 	file.open("res://source/scene/mapa/falas.json", file.READ)
 	var text = file.get_as_text()
-	print(text)
 	var json_res = JSON.parse(text)
 	file.close()
 	if json_res.error == OK:
 		talk_dict = json_res.result
-		print(talk_dict)
+		print(talk_dict["Cores"])
 	else:
 		print(json_res.error)
 	$CanvasLayer/Left.connect("button_down", $Player,"press_left")
@@ -111,6 +110,16 @@ func prox_fala():
 			talk_index+=1
 	else:
 		var fala = texto[1]
+		var color
+		if nome in talk_dict["Cores"].keys():
+			color = Color(talk_dict["Cores"][nome])
+			print(talk_dict["Cores"][nome])
+		else:
+			color = Color("#ffffff")
+	
+		$CanvasLayer/Textbox/Text.modulate = color
+		$CanvasLayer/Textbox/Name.modulate = color
+		
 		$CanvasLayer/Textbox/Text.text = fala
 		$CanvasLayer/Textbox/Name.text = nome
 		talk_index+=1
