@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Acordisséia: Aedo Quest"
-run/main_scene="res://source/scene/mapa/mapa_1.tscn"
+run/main_scene="res://source/scene/Menus/Main.tscn"
 config/icon="res://icon.png"
 
 [display]
