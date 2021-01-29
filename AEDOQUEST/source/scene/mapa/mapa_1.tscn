@@ -1,6 +1,5 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://source/scene/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/scene/minigame/time_guess.tres" type="DynamicFont" id=3]
 [ext_resource path="res://source/scene/mapa/mapa_1.gd" type="Script" id=4]
@@ -8,7 +7,8 @@
 [ext_resource path="res://source/sprite/background/grama.png" type="Texture" id=6]
 [ext_resource path="res://source/sprite/background/tower.png" type="Texture" id=7]
 [ext_resource path="res://source/sprite/character/CRIMSONWITCH.png" type="Texture" id=8]
-[ext_resource path="res://source/sprite/background/parede.jpg" type="Texture" id=10]
+[ext_resource path="res://source/sprite/background/castlewall.png" type="Texture" id=9]
+[ext_resource path="res://source/sprite/background/castleground.png" type="Texture" id=10]
 [ext_resource path="res://source/sprite/background/tower_entrance.png" type="Texture" id=12]
 [ext_resource path="res://source/sprite/background/plains.png" type="Texture" id=13]
 [ext_resource path="res://source/sprite/background/skies.png" type="Texture" id=14]
@@ -32,7 +32,7 @@ extents = Vector2( 17.8958, 478.592 )
 radius = 116.625
 height = 120.074
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 21 ) ],
 "loop": true,
@@ -40,12 +40,11 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 116.625
 height = 120.074
 
-[sub_resource type="Animation" id=5]
-resource_name = "vazar"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -129,8 +128,8 @@ flip_h = true
 visible = false
 position = Vector2( 2.45996, -163.575 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 6 )
-frame = 6
+frames = SubResource( 4 )
+frame = 8
 playing = true
 
 [node name="Torre" type="Area2D" parent="."]
@@ -151,26 +150,32 @@ texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torre"]
 position = Vector2( 19.74, 28.024 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="diag" type="AnimatedSprite" parent="Torre"]
 visible = false
 position = Vector2( 17.74, -191.976 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 6 )
-frame = 6
+frames = SubResource( 4 )
+frame = 8
 playing = true
 
 [node name="Torre2" type="Area2D" parent="."]
 position = Vector2( 410.243, 1979.91 )
 
-[node name="parede" type="Sprite" parent="Torre2"]
-position = Vector2( 900.945, 249.761 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 10 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Torre2"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Torre2/ParallaxBackground"]
+position = Vector2( 18, 87 )
+motion_mirroring = Vector2( 1280, 720 )
+
+[node name="Wall" type="Sprite" parent="Torre2/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 687, 940 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torre2"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="castledoors2" type="Sprite" parent="Torre2"]
 position = Vector2( -0.243042, -25.91 )
@@ -181,14 +186,15 @@ texture = ExtResource( 12 )
 visible = false
 position = Vector2( -2.24301, -196.91 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 6 )
-frame = 5
+frames = SubResource( 4 )
+frame = 7
 playing = true
 
 [node name="Chao2" type="StaticBody2D" parent="."]
 position = Vector2( 632.04, 2094.16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chao2"]
+position = Vector2( 0, 68 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Chao2"]
@@ -199,23 +205,19 @@ shape = SubResource( 2 )
 position = Vector2( 1909.51, -312.716 )
 shape = SubResource( 2 )
 
-[node name="icon" type="Sprite" parent="Chao2"]
-position = Vector2( 650.592, 21.5576 )
-scale = Vector2( 39.5162, 1 )
-texture = ExtResource( 1 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Chao2"]
 
-[node name="icon2" type="Sprite" parent="Chao2"]
-position = Vector2( -645.1, -273.296 )
-scale = Vector2( -0.687289, 22.9236 )
-texture = ExtResource( 1 )
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Chao2/ParallaxBackground"]
+position = Vector2( 23, 94 )
+motion_mirroring = Vector2( 1280, 0 )
 
-[node name="icon3" type="Sprite" parent="Chao2"]
-position = Vector2( 1915.53, -273.296 )
-scale = Vector2( -0.687289, 22.9236 )
-texture = ExtResource( 1 )
+[node name="Ground" type="Sprite" parent="Chao2/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 624, 1777 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 10 )
 
 [node name="Enemy" type="Area2D" parent="."]
-position = Vector2( 1941.71, 1982.01 )
+position = Vector2( 1938, 2050 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource( 3 )
@@ -227,16 +229,18 @@ texture = ExtResource( 8 )
 flip_h = true
 
 [node name="diag" type="AnimatedSprite" parent="Enemy"]
+visible = false
 position = Vector2( -4.70996, -190.01 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 6 )
-frame = 5
+frames = SubResource( 4 )
+frame = 7
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
-anims/vazar = SubResource( 5 )
+anims/vazar = SubResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 242, 505 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
