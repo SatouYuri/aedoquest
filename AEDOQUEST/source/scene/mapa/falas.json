@@ -23,6 +23,10 @@
     "depois": [["Bruxa", "Raios! Se eu tivesse tempo para me preparar..."], ["Bruxa","Escute aqui! Na próxima vez que nos enfrentarmos não será tão fácil!"], ["com", "vazar"]]
 },
 "Batalha":{
-    "0": [["Bruxa", "Vou fazer picadinho de você!"],["Instrumento", ""]]
+    "0": [["Bruxa", "Vou fazer picadinho de você!"],["Instrumento", "Ela vai nos atacar com rajadas de Echo"], ["Instrumento", "A barreira dela vai refletir ataques normais."],
+            ["Instrumento","Precisamos preparar um ataque forte para atingir ela!"], ["Instrumento", "Foque em anular os ataques dela até carregarmos a super rajada."], ["com","prox_fase_mg1"]],
+    "1": [["Bruxa", "Então você quer brincar? Quero ver do que você é feito"],["Instrumento","Continue assim, a barreira não vai durar muito tempo."],["com","prox_fase_mg1"]],
+    "2": [["Bruxa", "Chega de brincadeira, agora vou lutar sério!"], ["Instrumento", "Estamos quase lá!"],["Instrumento"," Mais uma super rajada e a barreira será destruída."], ["com","prox_fase_mg1"]]
+
 }
 }

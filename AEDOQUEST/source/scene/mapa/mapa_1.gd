@@ -45,7 +45,17 @@ func _ready():
 	$Enemy.connect("body_exited",self,"body_leave_enemy")
 	$CanvasLayer/inter.connect("pressed",self,"interact")
 	pass
-	
+
+func fase_mg1(fase):
+	if fase == 1:
+		current_talk = talk_dict["Batalha"]["1"]
+		falando()
+	elif fase == 2:
+		current_talk = talk_dict["Batalha"]["2"]
+		falando()
+	else:
+		game.prox_fase()
+
 func falando():
 	talking = true
 	disable_canvas()
@@ -109,6 +119,11 @@ func prox_fala():
 			$NPC/AQNPC1_CURSE3.show()
 			talk_index+=1
 			prox_fala()
+		elif texto[1] == "prox_fase_mg1":
+			parou_de_falar()
+			disable_canvas()
+			game.prox_fase()
+			pass
 		elif texto[1] == "fim":
 			get_tree().change_scene("res://source/scene/Menus/End.tscn")
 	else:
@@ -151,6 +166,10 @@ func enter_minigame(minigame):
 	game.connect("minigame_result",self,"exit_minigame")
 	$Player/Camera2D.current = false
 	$Minigame_location/Camera2D.current = true
+	if minigame == 0:
+		game.connect("passou_fase",self,"fase_mg1")
+		current_talk = talk_dict["Batalha"]["0"]
+		falando()
 	
 	pass
 func voltou():

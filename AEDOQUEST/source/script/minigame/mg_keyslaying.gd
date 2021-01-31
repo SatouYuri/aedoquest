@@ -1,6 +1,7 @@
 extends Node2D
 
 signal minigame_result(result)
+signal passou_fase(fase)
 #Constantes
 const X_AXIS_START = 220 #TODO: Deixar essa constante menos hardcoded...
 const X_AXIS_END = 1240 #TODO: Deixar essa constante menos hardcoded...
@@ -35,6 +36,9 @@ var testChartPos : int = 0
 
 #Código Inicial
 func _ready():
+	
+	set_physics_process(false)
+	
 	time = 0
 	
 	keyList = [
@@ -126,7 +130,7 @@ func prox_fase():
 	$Button2.disabled = true
 	$Button2.hide()
 	testChartPos = 0
-	fase += 1
+	
 	if fase >= testChart.size():
 		emit_signal("minigame_result",true)
 	else:
@@ -139,10 +143,10 @@ func earnCharge():
 	if $Pentagram/Clef/ClefShade.value >= 100.0:
 		$Pentagram/Clef/ClefShade.value = 0
 		$Timers/TEST_FREQUENCY.stop()
+		fase += 1
 		set_physics_process(false)
 		clearShots()
-		$Button2.disabled = false
-		$Button2.show()
+		emit_signal("passou_fase",fase)
 
 func takeDamage(damagePercentage : float):
 	if $Pentagram/Clef/Clef.value > 0:
