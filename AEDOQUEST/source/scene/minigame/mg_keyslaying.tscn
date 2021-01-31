@@ -334,5 +334,17 @@ text = "DEBUG"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+margin_left = 507.0
+margin_top = 182.0
+margin_right = 906.0
+margin_bottom = 336.0
+text = "prox"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="Timers/TEST_FREQUENCY" to="." method="_on_TEST_FREQUENCY_timeout"]
 [connection signal="pressed" from="Button" to="." method="debug"]
+[connection signal="pressed" from="Button2" to="." method="prox_fase"]

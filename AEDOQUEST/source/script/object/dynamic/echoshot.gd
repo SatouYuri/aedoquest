@@ -43,9 +43,6 @@ func _on_EchoShot_area_entered(area):
 		if position.x <= 1240 and position.x >= 220:
 			get_parent().get_node("Pentagram").get_node("Line" + line).get_node("FeedbackGrad").modulate.a = 1.00
 			get_parent().get_node("Pentagram").get_node("Line" + line).get_node("AudioStreamPlayer").play()
-			get_parent().earnCharge(2.50)
-		else:
-			get_parent().takeDamage(5.00)
-			queue_free()
+			get_parent().earnCharge()
 		area.queue_free()
 		queue_free()

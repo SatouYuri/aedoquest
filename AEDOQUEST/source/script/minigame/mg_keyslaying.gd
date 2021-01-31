@@ -16,11 +16,13 @@ const C = 5
 const D = 6
 const E2 = 7
 const F2 = 8
-const testChart = [E, F, G, E, F, G, E, F, G,
-					  A, B, B, A, A, B, F, G, F,
-					  G, G, G, E, E, E, F, F, F, G]
+const damage = [10,10,3.3334]
+const testChart = [[E,F,F,E,F,E,F,F,F,E],[E,G,A,F,G,A,F,G,E,A],[E, F, G, E, F, G, E, F, G,
+					  A, B, B, C, A, B, F, G, F,
+					  G, G, C, E, E, C, F, F, F, G, A, C]]
 
 #Variáveis de Estado
+var fase = 0
 var keyList = []
 var gradPlayerList = []
 var gradEnemyList = []
@@ -120,12 +122,27 @@ func shoot(line : String, zIndex : int, direction : int):
 			newEchoShot.z_index += zIndex
 			break
 
-func earnCharge(chargePercentage : float):
-	if $Pentagram/Clef/ClefShade.value < 100.0:
-		$Pentagram/Clef/ClefShade.value += chargePercentage
-	else:
-		$Pentagram/Clef/ClefShade.value = 100.0
+func prox_fase():
+	$Button2.disabled = true
+	$Button2.hide()
+	testChartPos = 0
+	fase += 1
+	if fase >= testChart.size():
 		emit_signal("minigame_result",true)
+	else:
+		$Timers/TEST_FREQUENCY.start()
+		set_physics_process(true)
+	pass
+
+func earnCharge():
+	$Pentagram/Clef/ClefShade.value += damage[fase]
+	if $Pentagram/Clef/ClefShade.value >= 100.0:
+		$Pentagram/Clef/ClefShade.value = 0
+		$Timers/TEST_FREQUENCY.stop()
+		set_physics_process(false)
+		clearShots()
+		$Button2.disabled = false
+		$Button2.show()
 
 func takeDamage(damagePercentage : float):
 	if $Pentagram/Clef/Clef.value > 0:
@@ -241,14 +258,10 @@ func _physics_process(delta):
 		keyPressed[F2] = false
 
 func _on_TEST_FREQUENCY_timeout():
-	#var randLine = getLineByConst(int(rand_range(E, F2)))
-	#shoot(randLine, keyPressed.size() - getConstByLine(randLine), -1)
-	if testChartPos < testChart.size():
-		shoot(getLineByConst(testChart[testChartPos]), keyPressed.size() - testChart[testChartPos], -1)
-	else:
-		testChartPos = -1
+	shoot(getLineByConst(testChart[fase][testChartPos]), keyPressed.size() - testChart[fase][testChartPos], -1)
 	testChartPos += 1
-
+	if testChartPos >= testChart[fase].size():
+		testChartPos = 0
 
 func debug():
 	emit_signal("minigame_result",true)
