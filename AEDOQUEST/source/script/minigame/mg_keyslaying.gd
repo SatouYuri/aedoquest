@@ -23,6 +23,7 @@ const testChart = [[E,F,F,E,F,E,F,F,F,E],[E,G,A,F,G,A,F,G,E,A],[E, F, G, E, F, G
 					  G, G, C, E, E, C, F, F, F, G, A, C]]
 
 #Variáveis de Estado
+var super_active = false
 var fase = 0
 var keyList = []
 var gradPlayerList = []
@@ -38,6 +39,7 @@ var testChartPos : int = 0
 func _ready():
 	
 	set_physics_process(false)
+	$CanvasLayer/Button2.connect("pressed",self,"super_shoot")
 	$KeyslayingGUI.disable_all()
 	time = 0
 	
@@ -127,16 +129,17 @@ func shoot(line : String, zIndex : int, direction : int):
 			break
 
 func prox_fase():
-	$Button2.disabled = true
-	$Button2.hide()
+	super_active = false
+	$CanvasLayer/Button2.disabled = true
+	$CanvasLayer/Button2.hide()
 	testChartPos = 0
-	if fase == 0:
+	if fase >= 0:
 		$KeyslayingGUI.enable_key("E")
 		$KeyslayingGUI.enable_key("F")
-	if fase == 1:
+	if fase >= 1:
 		$KeyslayingGUI.enable_key("G")
 		$KeyslayingGUI.enable_key("A")
-	if fase == 2:
+	if fase >= 2:
 		$KeyslayingGUI.enable_key("B")
 		$KeyslayingGUI.enable_key("C")
 	if fase >= testChart.size():
@@ -146,15 +149,34 @@ func prox_fase():
 		set_physics_process(true)
 	pass
 
+func super_hit():
+	$Pentagram/Clef/ClefShade.value = 0
+	$Timers/TEST_FREQUENCY.stop()
+	fase += 1
+	set_physics_process(false)
+	clearShots()
+	emit_signal("passou_fase",fase)
+
+func super_shoot():
+	$Pentagram/Clef/ClefShade.value = 0
+	$CanvasLayer/Button2.disabled = true
+	$CanvasLayer/Button2.hide()
+	var super = load("res://source/scene/object/dynamic/superrajada.tscn").instance()
+	add_child(super)
+	super.connect("cheguei",self,"super_hit")
+	super.position.x = X_AXIS_PLAYER_START
+	super.position.y = keyList[4][1]
+	
+	pass
+
 func earnCharge():
 	$Pentagram/Clef/ClefShade.value += damage[fase]
-	if $Pentagram/Clef/ClefShade.value >= 100.0:
-		$Pentagram/Clef/ClefShade.value = 0
-		$Timers/TEST_FREQUENCY.stop()
-		fase += 1
-		set_physics_process(false)
-		clearShots()
-		emit_signal("passou_fase",fase)
+	if not super_active and $Pentagram/Clef/ClefShade.value >= 100.0:
+		$KeyslayingGUI.disable_all()
+		$CanvasLayer/Button2.disabled = false
+		$CanvasLayer/Button2.show()
+		super_active = true
+		pass
 
 func takeDamage(damagePercentage : float):
 	if $Pentagram/Clef/Clef.value > 0:
