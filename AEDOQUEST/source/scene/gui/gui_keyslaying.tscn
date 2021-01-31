@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/sprite/ui/key.png" type="Texture" id=1]
+[ext_resource path="res://source/scene/gui/gui_keyslaying.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://source/font/Basis33/basis33.ttf"
@@ -13,6 +14,7 @@ font_data = SubResource( 1 )
 margin_right = 12.0
 margin_bottom = 20.0
 rect_scale = Vector2( 0.45, 0.45 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

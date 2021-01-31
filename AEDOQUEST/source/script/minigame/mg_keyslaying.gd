@@ -38,7 +38,7 @@ var testChartPos : int = 0
 func _ready():
 	
 	set_physics_process(false)
-	
+	$KeyslayingGUI.disable_all()
 	time = 0
 	
 	keyList = [
@@ -130,7 +130,15 @@ func prox_fase():
 	$Button2.disabled = true
 	$Button2.hide()
 	testChartPos = 0
-	
+	if fase == 0:
+		$KeyslayingGUI.enable_key("E")
+		$KeyslayingGUI.enable_key("F")
+	if fase == 1:
+		$KeyslayingGUI.enable_key("G")
+		$KeyslayingGUI.enable_key("A")
+	if fase == 2:
+		$KeyslayingGUI.enable_key("B")
+		$KeyslayingGUI.enable_key("C")
 	if fase >= testChart.size():
 		emit_signal("minigame_result",true)
 	else:
