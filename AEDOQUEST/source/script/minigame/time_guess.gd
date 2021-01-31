@@ -23,9 +23,38 @@ var order = []
 func play_met():
 	$Metronomo.play()
 
+func evaluate():
+	var size_total = 0
+	
+	for child in order:
+		size_total += sizes[child]
+	if size_total < 800:
+		return
+	if order == padrao[sequence_index]:
+		disable_buttons()
+		yield(get_tree().create_timer(0.2), "timeout")
+		delete_all()
+		
+		if not genius:
+			$Lock.seqSolveLock()
+		
+		
+		sequence_index+=1
+		yield(get_tree().create_timer(2), "timeout")
+		playmusic()
+	else:
+		delete_all()
+		$UI/AnimationPlayer.play("wrong")
+		enable_buttons()
+	pass
+
 func kill_current():
 	current_note.die()
-	next()
+	if is_playing:
+		next()
+	else:
+		enable_buttons()
+		evaluate()
 
 func enable_buttons():
 	for child in $Notas.get_children():
@@ -38,7 +67,7 @@ func disable_buttons():
 	for child in $Notas.get_children():
 		if child.name[0] == 'b':
 			child.get_node("Label").modulate.a = 0.5
-			if not genius:
+			if not genius and is_playing:
 				child.get_node("Panel").hide()
 			child.disabled = true
 
@@ -67,6 +96,7 @@ func playmusic():
 			return
 			pass
 	elif not is_playing:
+		is_playing = true
 		disable_buttons()
 		sound_index = 0
 		$Metronomo.play()
@@ -96,30 +126,22 @@ func add_note(var index):
 	
 	if index < 0 or index > 3:
 		return
+	disable_buttons()
+	$Metronomo/Timer.stop()
 	var new_child = note_scenes[index].instance()
 	$Measure.add_child(new_child)
-	order.append(index)
-	
-	var size_total = 0
-	
-	for child in order:
-		size_total += sizes[child]
-	if size_total < 800:
+	var new_player = SmartPlayer.new()
+	if order.size() >= sounds[sequence_index].size():
+		print("ahoy")
+		order.append(index)
+		evaluate()
 		return
-	if order == padrao[sequence_index]:
-		disable_buttons()
-		yield(get_tree().create_timer(0.2), "timeout")
-		delete_all()
-		$Lock.seqSolveLock()
-		
-		$Metronomo/Timer.stop()
-		sequence_index+=1
-		yield(get_tree().create_timer(2), "timeout")
-		playmusic()
-		
-	else:
-		delete_all()
-		$UI/AnimationPlayer.play("wrong")
+	new_player.stream = load(sounds_path+sounds[sequence_index][order.size()]+".ogg")
+	add_child(new_player)
+	new_player.play()
+	current_note = new_player
+	$Notas/AnimationPlayer.play(anims[index])
+	order.append(index)
 	
 func delete_last():
 	if $Measure.get_children().size() > 0:
