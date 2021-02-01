@@ -55,6 +55,15 @@ func fase_mg1(fase):
 		falando()
 	else:
 		game.prox_fase()
+func fase_mg2(fase):
+	print("oi2")
+	if fase == 6:
+		game.genius=  false
+	if str(fase) in talk_dict["Fechadura"].keys():
+		current_talk = talk_dict["Fechadura"][str(fase)]
+		falando()
+	else:
+		game.playmusic()
 
 func falando():
 	talking = true
@@ -124,6 +133,11 @@ func prox_fala():
 			disable_canvas()
 			game.prox_fase()
 			pass
+		elif texto[1] == "prox_fase_mg2":
+			print("oi3")
+			parou_de_falar()
+			disable_canvas()
+			game.playmusic()
 		elif texto[1] == "fim":
 			get_tree().change_scene("res://source/scene/Menus/End.tscn")
 	else:
@@ -169,6 +183,10 @@ func enter_minigame(minigame):
 	if minigame == 0:
 		game.connect("passou_fase",self,"fase_mg1")
 		current_talk = talk_dict["Batalha"]["0"]
+		falando()
+	elif minigame == 1:
+		game.connect("passou_fase",self,"fase_mg2")
+		current_talk = talk_dict["Fechadura"]["0"]
 		falando()
 	
 	pass

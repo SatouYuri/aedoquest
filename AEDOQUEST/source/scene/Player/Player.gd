@@ -36,6 +36,5 @@ func _physics_process(delta):
 	if right_pressed:
 		sprite_right()
 		velocity.x += SPEED
-	print(position.y)
 	move_and_slide_with_snap(velocity,  Vector2(0,10), Vector2(0,-1))
 	pass

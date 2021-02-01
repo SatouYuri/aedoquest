@@ -28,5 +28,14 @@
     "1": [["Bruxa", "Então você quer brincar? Quero ver do que você é feito"],["Instrumento","Continue assim, a barreira não vai durar muito tempo."],["com","prox_fase_mg1"]],
     "2": [["Bruxa", "Chega de brincadeira, agora vou lutar sério!"], ["Instrumento", "Estamos quase lá!"],["Instrumento"," Mais uma super rajada e a barreira será destruída."], ["com","prox_fase_mg1"]]
 
+},
+"Fechadura":{
+    "0": [["A","Teste0"], ["com","prox_fase_mg2"]],
+    "1": [["A","Teste1"], ["com","prox_fase_mg2"]],
+    "2": [["A","Teste2"], ["com","prox_fase_mg2"]],
+    "3": [["A","Teste3"], ["com","prox_fase_mg2"]],
+    "4": [["A","Teste4"], ["com","prox_fase_mg2"]],
+    "5": [["A","Teste5"], ["com","prox_fase_mg2"]],
+    "6": [["A","Teste6"], ["com","prox_fase_mg2"]]
 }
 }
