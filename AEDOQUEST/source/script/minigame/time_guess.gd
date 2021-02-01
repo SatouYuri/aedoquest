@@ -30,7 +30,7 @@ func evaluate():
 	
 	for child in order:
 		size_total += sizes[child]
-	if size_total < 800:
+	if size_total < 800 and order.size() < padrao[sequence_index].size():
 		return
 	if order == padrao[sequence_index]:
 		disable_buttons()
@@ -46,6 +46,7 @@ func evaluate():
 		print("oi")
 		emit_signal("passou_fase",sequence_index)
 	else:
+		print("aasas")
 		delete_all()
 		$UI/AnimationPlayer.play("wrong")
 		enable_buttons()
