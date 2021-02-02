@@ -18,9 +18,7 @@ const D = 6
 const E2 = 7
 const F2 = 8
 const damage = [10,10,3.3334]
-const testChart = [[E,F,F,E,F,E,F,F,F,E],[E,G,A,F,G,A,F,G,E,A],[E, F, G, E, F, G, E, F, G,
-					  A, B, B, C, A, B, F, G, F,
-					  G, G, C, E, E, C, F, F, F, G, A, C]]
+const testChart = [[E,F,F,E,F,E,F,F,F,E],[E,G,A,F,G,A,F,G,E,A]]
 
 #Variáveis de Estado
 var super_active = false

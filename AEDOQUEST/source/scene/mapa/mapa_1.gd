@@ -50,9 +50,6 @@ func fase_mg1(fase):
 	if fase == 1:
 		current_talk = talk_dict["Batalha"]["1"]
 		falando()
-	elif fase == 2:
-		current_talk = talk_dict["Batalha"]["2"]
-		falando()
 	else:
 		game.prox_fase()
 func fase_mg2(fase):
