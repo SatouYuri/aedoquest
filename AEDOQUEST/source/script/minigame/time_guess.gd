@@ -6,12 +6,12 @@ var current_note
 var bpm = 60
 var genius = true
 var padrao = [[0],[1,1],[2,2,2,2],[3,3,3,3,3,3,3,3],[2,1,3,3],
-	[2,2,2,2],[0],[2,2,1],[3,3,2,2,2],[3,3,3,3,2,3,3]]
+	[2,2,2,2],[0],[2,2,1],[1,2,2],[3,3,2,2,2]]
 var anims = ["whole","half","quarter","eighth"]
 var is_playing = false
 const sounds_path = "res://source/notes_piano/"
-var sounds = [["C4"],["D4","D4"],["E4","E4","E4","E4"],["F4","F4","F4","F4","F4","F4","F4","F4"],
-			["C4","B4","E4","E4"],["C4","D4","E4","F4"],["C4"],["C4","D4","E4"],["G4","G4","A4","G4","C5"],["G4","F4","E4","D4","C4","D4","E4"]]
+var sounds = [["C4"],["C4","C4"],["C4","C4","C4","C4"],["C4","C4","C4","C4","C4","C4","C4","C4"],
+			["C4","C4","C4","C4"],["C4","C4","C4","C4"],["C4"],["C4","C4","C4"],["C4","C4","C4"],["C4","C4","C4","C4","C4"]]
 var sound_index = 0
 var sequence_index = 0
 var interval_time = [240.0/bpm,120.0/bpm,60.0/bpm,30.0/bpm]
@@ -44,6 +44,8 @@ func evaluate():
 		sequence_index+=1
 		yield(get_tree().create_timer(2), "timeout")
 		print("oi")
+		if sequence_index == 5:
+			sequence_index = 6
 		emit_signal("passou_fase",sequence_index)
 	else:
 		print("aasas")

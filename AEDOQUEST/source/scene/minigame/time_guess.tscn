@@ -60,7 +60,7 @@ tracks/0/keys = {
 size = 40
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 resource_name = "eighth"
 length = 0.5
 tracks/0/type = "method"
@@ -90,7 +90,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "half"
 length = 2.0
 tracks/0/type = "method"
@@ -120,7 +120,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 resource_name = "quarter"
 tracks/0/type = "method"
 tracks/0/path = NodePath("..")
@@ -149,7 +149,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "whole"
 length = 4.0
 tracks/0/type = "method"
@@ -424,10 +424,10 @@ __meta__ = {
 [node name="Panel" type="Node2D" parent="Notas/b5"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Notas"]
-anims/eighth = SubResource( 11 )
-anims/half = SubResource( 9 )
-anims/quarter = SubResource( 10 )
-anims/whole = SubResource( 8 )
+anims/eighth = SubResource( 4 )
+anims/half = SubResource( 5 )
+anims/quarter = SubResource( 6 )
+anims/whole = SubResource( 7 )
 
 [node name="Metronomo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
