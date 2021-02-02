@@ -447,7 +447,7 @@ visible = false
 position = Vector2( 2.45996, -163.575 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Torre" type="Area2D" parent="."]
@@ -475,7 +475,7 @@ visible = false
 position = Vector2( 17.74, -191.976 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Torre2" type="Area2D" parent="."]
@@ -512,7 +512,6 @@ visible = false
 position = Vector2( -2.24301, -196.91 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="Chao2" type="StaticBody2D" parent="."]
@@ -556,7 +555,6 @@ visible = false
 position = Vector2( -4.70996, -190.01 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
