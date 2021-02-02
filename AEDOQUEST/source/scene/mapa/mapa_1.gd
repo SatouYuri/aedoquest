@@ -103,6 +103,7 @@ func prox_fala():
 			prox_fala()
 		elif texto[1] == "enter":
 			talk_index+=1
+			$CanvasLayer/inter.disabled = true
 			$Camera_NPC/AnimationPlayer.play("Entrar")
 			
 		elif texto[1] == "go_to_tower":
@@ -118,6 +119,7 @@ func prox_fala():
 			prox_fala()
 		elif texto[1] == "player_leave":
 			talk_index+=1
+			$CanvasLayer/inter.disabled = true
 			$Camera_NPC/AnimationPlayer.play("Sair")
 			pass
 		elif texto[1] == "tuba":
