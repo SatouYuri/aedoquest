@@ -4,22 +4,17 @@
             "Rapaz":"#ebb52d"
 },
 "Rapaz": {
-    "antes": [["Bardo","Olá! Tudo certo por aqui?"],["Rapaz", "Na verdade não, nem um pouco."], ["Bardo", "O que houve?"],
-                ["Rapaz","Sabe a bruxa que mora nessa torre?"],["Rapaz", "Ela roubou minhas coisas, e eu não consigo entrar..."],["Rapaz","Aquela porta não parece normal."],
-                ["Bardo","Entendi... Vou dar uma olhada!"],["com","enabledoor"]],
-    "porta": [["Rapaz", "Nossa, como você fez pra abrir?"],["com","player_look_left"],["Bardo", "Estava enfeitiçada mesmo, igual você disse"],["Bardo","Eu vou entrar lá para conversar com a bruxa."],
-                ["Rapaz", "Ok... Tome cuidado!"],["com","enter"],["Rapaz","..."],["Rapaz","(Agora é só esperar...)"],["com","go_to_tower"]],
+    "antes": [["Rapaz", "Me ajude!"],["Rapaz","A bruxa que mora nessa torre roubou minhas coisas."],
+                ["Bardo","Vou dar uma olhada."],["com","enabledoor"]],
+    "porta": [["Rapaz", "Nossa, como você fez pra abrir?"],["com","player_look_left"],["Bardo", "Magia"],["Bardo","Já volto."],
+                ["Rapaz", "Ok."],["com","enter"],["Rapaz","..."],["Rapaz","(Agora é só esperar...)"],["com","go_to_tower"]],
     "entrou": [["Rapaz","Precisa de alguma coisa?"]],
     "depois": [["Rapaz", "Nossa, você conseguiu meus itens de volta! Muito obrigado!"], ["Bardo", "De nada. Até mais!"], ["com","player_leave"],
                 ["Rapaz","(Como assim ele está bem?! Devia ter sido aniquilado!)"],["Rapaz","(Não importa)"],["com","tuba"],["Rapaz","(Ele não terá chance contra a legião da tuba... hihihi)"], ["com","fim"]]
 },
 "Bruxa": {
-    "antes": [["Bruxa", "Ora, mas quem é você?"], ["Bardo", "Tem um rapaz lá fora querendo falar com você,"],["Bardo", "mas ele não estava conseguindo entrar por causa da fechadura mágica."],
-                ["Bruxa", "Que eu enfeiticei justamente pra não entrarem aqui mesmo."],["Bardo", "Eu imagino que sim, e não tenho intenção de incomodar..."],
-                ["Bardo","Mas ele disse que você roubou pertences dele."],["Bardo","Ele está plantado ali há um tempo... "],
-                ["Bardo","Será que não é melhor vocês conversarem pra resolver isso?"],["Bruxa","E será que não é melhor você não se meter em assuntos alheios?"],
-                ["Bardo","Só estou tentando ajudar, ele parece preocupado."],["Bardo","Não pode devolver os pertences dele?"],["Bruxa","Você está me incomodando. Vá embora!"],
-                ["Bardo","Não irei até que você devolva o que roubou!"],["Bruxa","Me parece que preciso te colocar pra fora à força..."],["com", "minigame1"]],
+    "antes": [["Bruxa", "Ora, mas quem é você?"], ["Bardo", "Devolva os itens que roubou."],["Bruxa", "Não vou devolver."],["Bardo", "Devolve."],
+                ["Bruxa","Me parece que preciso te colocar pra fora à força..."],["com", "minigame1"]],
     "depois": [["Bruxa", "Raios! Se eu tivesse tempo para me preparar..."], ["Bruxa","Escute aqui! Na próxima vez que nos enfrentarmos não será tão fácil!"], ["com", "vazar"]]
 },
 "Batalha":{

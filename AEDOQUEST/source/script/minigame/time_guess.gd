@@ -6,12 +6,12 @@ var current_note
 var bpm = 60
 var genius = true
 var padrao = [[0],[1,1],[2,2,2,2],[3,3,3,3,3,3,3,3],[2,1,3,3],
-	[2,2,2,2],[0],[2,2,1],[1,2,2],[3,3,2,2,2]]
+	[2,2,2,2],[0],[2,2,1],[1,2,2],[3,3,3,3,3,3,3,3]]
 var anims = ["whole","half","quarter","eighth"]
 var is_playing = false
 const sounds_path = "res://source/notes_piano/"
 var sounds = [["C4"],["C4","C4"],["C4","C4","C4","C4"],["C4","C4","C4","C4","C4","C4","C4","C4"],
-			["C4","C4","C4","C4"],["C4","C4","C4","C4"],["C4"],["C4","C4","C4"],["C4","C4","C4"],["C4","C4","C4","C4","C4"]]
+			["C4","C4","C4","C4"],["C4","C4","C4","C4"],["C4"],["C4","C4","C4"],["C4","C4","C4"],["C4","C4","C4","C4","C4","C4","C4","C4"]]
 var sound_index = 0
 var sequence_index = 0
 var interval_time = [240.0/bpm,120.0/bpm,60.0/bpm,30.0/bpm]
