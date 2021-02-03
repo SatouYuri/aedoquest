@@ -241,9 +241,9 @@ anims/right = SubResource( 1 )
 anims/wrong = SubResource( 2 )
 
 [node name="Playbutton" type="Button" parent="."]
-margin_left = 992.0
+margin_left = 700.0
 margin_top = 29.0
-margin_right = 1180.0
+margin_right = 888.0
 margin_bottom = 111.0
 custom_fonts/font = SubResource( 3 )
 text = "replay"
@@ -252,9 +252,9 @@ __meta__ = {
 }
 
 [node name="Debugbutton" type="Button" parent="."]
-margin_left = 700.0
+margin_left = 992.0
 margin_top = 29.0
-margin_right = 888.0
+margin_right = 1180.0
 margin_bottom = 111.0
 custom_fonts/font = SubResource( 3 )
 text = "debug"
