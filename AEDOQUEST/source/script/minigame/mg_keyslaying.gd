@@ -148,6 +148,10 @@ func prox_fase():
 	pass
 
 func super_hit():
+	if fase == 0:
+		$Pentagram/Clef/shield.texture = load("res://source/sprite/ui/crimson_shield_ui3.png")
+	else:
+		$Pentagram/Clef/shield.queue_free()
 	$Pentagram/Clef/ClefShade.value = 0
 	$Timers/TEST_FREQUENCY.stop()
 	fase += 1
@@ -176,9 +180,9 @@ func earnCharge():
 		super_active = true
 		pass
 
-func takeDamage(damagePercentage : float):
+func takeDamage():
 	if $Pentagram/Clef/Clef.value > 0:
-		$Pentagram/Clef/Clef.value -= damagePercentage
+		$Pentagram/Clef/Clef.value -= 9
 	if $Pentagram/Clef/Clef.value <= 0:
 		emit_signal("minigame_result",false)
 

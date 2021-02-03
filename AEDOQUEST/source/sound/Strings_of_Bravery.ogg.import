@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Strings_of_Bravery.ogg-710ed231fdcb5d61e6624eef8fde7253.oggstr"
+
+[deps]
+
+source_file="res://source/sound/Strings_of_Bravery.ogg"
+dest_files=[ "res://.import/Strings_of_Bravery.ogg-710ed231fdcb5d61e6624eef8fde7253.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

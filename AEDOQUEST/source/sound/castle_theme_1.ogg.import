@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/castle_theme_1.ogg-4f3914a405cca0453ea8c0f74011b825.oggstr"
+
+[deps]
+
+source_file="res://source/sound/castle_theme_1.ogg"
+dest_files=[ "res://.import/castle_theme_1.ogg-4f3914a405cca0453ea8c0f74011b825.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

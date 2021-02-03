@@ -79,6 +79,7 @@ func disable_buttons():
 
 func _ready():
 	disable_buttons()
+	$Debugbutton.connect("pressed",self,"debug")
 	$Notas/b1.connect("pressed",self,"add_note",[0])
 	$Notas/b2.connect("pressed",self,"add_note",[1])
 	$Notas/b3.connect("pressed",self,"add_note",[2])
@@ -157,3 +158,6 @@ func delete_all():
 	for child in $Measure.get_children():
 		child.queue_free()
 	order = []
+
+func debug():
+	emit_signal("minigame_result",true)

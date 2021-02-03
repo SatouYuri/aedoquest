@@ -3,7 +3,6 @@ extends Node2D
 var on_door_1 = false
 var on_door_2 = false
 var on_npc = false
-var on_enemy = false
 
 var door_locked = true
 var enemy_defeated = false
@@ -42,7 +41,6 @@ func _ready():
 	$Torre2.connect("body_entered",self,"body_close_door2")
 	$Torre2.connect("body_exited",self,"body_leave_door2")
 	$Enemy.connect("body_entered",self,"body_close_enemy")
-	$Enemy.connect("body_exited",self,"body_leave_enemy")
 	$CanvasLayer/inter.connect("pressed",self,"interact")
 	pass
 
@@ -63,6 +61,7 @@ func fase_mg2(fase):
 		game.playmusic()
 
 func falando():
+	$Player.walking(false)
 	talking = true
 	disable_canvas()
 	$CanvasLayer/inter.disabled = false
@@ -72,6 +71,7 @@ func falando():
 	prox_fala()
 
 func parou_de_falar():
+	$Player.walking(true)
 	enable_canvas()
 	talking = false
 	$CanvasLayer/Textbox.hide()
@@ -88,8 +88,10 @@ func prox_fala():
 	if nome == "com":
 		if texto[1] == "minigame1":
 			parou_de_falar()
+			$Enemy/crimson_shield_ui1.hide()
 			enter_minigame(0)
 		elif texto[1] == "vazar":
+			$Enemy/megumin.texture = load("res://source/sprite/character/CRIMSONWITCH_fly2.png")
 			parou_de_falar()
 			$Enemy/AnimationPlayer.play("vazar")
 		elif texto[1] == "enabledoor":
@@ -137,6 +139,10 @@ func prox_fala():
 			parou_de_falar()
 			disable_canvas()
 			game.playmusic()
+		elif texto[1] == "escudo":
+			$Enemy/crimson_shield_ui1.show()
+			talk_index+=1
+			prox_fala()
 		elif texto[1] == "fim":
 			get_tree().change_scene("res://source/scene/Menus/End.tscn")
 	else:
@@ -226,7 +232,7 @@ func exit_minigame(result):
 	
 	pass
 func button_check():
-	if talking or on_door_1 or on_door_2 or on_npc or on_enemy:
+	if talking or on_door_1 or on_door_2 or on_npc:
 		$CanvasLayer/inter.disabled = false
 	else:
 		$CanvasLayer/inter.disabled = true
@@ -269,17 +275,6 @@ func interact():
 			elif door_locked:
 				current_talk = talk_dict["Rapaz"]["antes"]
 				falando()
-		elif on_enemy:
-			if $Player.position.x > $Enemy.position.x:
-				$Enemy/megumin.flip_h = false
-				$Player.sprite_left()
-			else:
-				$Enemy/megumin.flip_h = true
-				$Player.sprite_right()
-			if not enemy_defeated:
-				current_talk = talk_dict["Bruxa"]["antes"]
-				falando()
-			print("tchau")
 
 func body_close_npc(body):
 	if body.is_in_group("Player"):
@@ -324,14 +319,14 @@ func body_leave_door2(body):
 
 func body_close_enemy(body):
 	if body.is_in_group("Player"):
-		on_enemy = true
-		$Enemy/diag.show()
-		button_check()
-	pass
-
-func body_leave_enemy(body):
-	if body.is_in_group("Player"):
-		on_enemy = false
-		$Enemy/diag.hide()
-		button_check()
+		if $Player.position.x > $Enemy.position.x:
+				$Enemy/megumin.flip_h = false
+				$Player.sprite_left()
+		else:
+			$Enemy/megumin.flip_h = true
+			$Player.sprite_right()
+		if not enemy_defeated:
+			current_talk = talk_dict["Bruxa"]["antes"]
+			falando()
+		print("tchau")
 	pass

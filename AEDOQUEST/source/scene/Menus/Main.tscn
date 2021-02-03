@@ -1,64 +1,141 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://source/scene/minigame/time_guess.tres" type="DynamicFont" id=1]
 [ext_resource path="res://source/scene/Menus/Main.gd" type="Script" id=2]
 [ext_resource path="res://source/font/Basis33/basis33.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 160
-font_data = ExtResource( 3 )
+[ext_resource path="res://source/sprite/ui/aqlogo_gradient.png" type="Texture" id=4]
+[ext_resource path="res://source/sprite/ui/aqlogo.png" type="Texture" id=5]
+[ext_resource path="res://source/sound/Strings_of_Bravery.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 100
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -60.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("aqlogo_gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.443137, 0.054902, 0.705882, 1 ), Color( 0.129412, 0.101961, 0.129412, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("aqlogo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("aqlogo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.223529 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("NewGame:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="Main" type="Control"]
 margin_right = 1280.0
 margin_bottom = 720.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NewGame" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -175.0
-margin_top = -10.0
-margin_right = 175.0
-margin_bottom = 76.0
-custom_fonts/font = ExtResource( 1 )
-text = "Novo Jogo"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Quit" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -175.0
-margin_top = 140.0
-margin_right = 175.0
-margin_bottom = 226.0
-custom_fonts/font = ExtResource( 1 )
-text = "Sair"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 1282.0
-margin_bottom = 262.0
-custom_fonts/font = SubResource( 1 )
-text = "Acordisséia"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,3 +152,56 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="aqlogo_gradient" type="Sprite" parent="."]
+modulate = Color( 0.443137, 0.054902, 0.705882, 1 )
+position = Vector2( -150, 0 )
+scale = Vector2( 5, 4 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="aqlogo" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 639.185, 189.072 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.0055747 )
+margin_left = 3.51013
+margin_top = 398.617
+margin_right = 1277.51
+margin_bottom = 652.617
+custom_fonts/font = SubResource( 1 )
+text = "Aperte para começar"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -635.0
+margin_top = -368.0
+margin_right = 640.0
+margin_bottom = 355.0
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "Novo Jogo"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fadeout = SubResource( 4 )
+anims/start = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true

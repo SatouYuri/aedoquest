@@ -14,7 +14,7 @@
 },
 "Bruxa": {
     "antes": [["Bruxa", "Ora, mas quem é você?"], ["Bardo", "Devolva os itens que roubou."],["Bruxa", "Não vou devolver."],["Bardo", "Devolve."],
-                ["Bruxa","Me parece que preciso te colocar pra fora à força..."],["com", "minigame1"]],
+                ["com","escudo"],["Bruxa","Me parece que preciso te colocar pra fora à força..."],["com", "minigame1"]],
     "depois": [["Bruxa", "Raios! Se eu tivesse tempo para me preparar..."], ["Bruxa","Escute aqui! Na próxima vez que nos enfrentarmos não será tão fácil!"], ["com", "vazar"]]
 },
 "Batalha":{

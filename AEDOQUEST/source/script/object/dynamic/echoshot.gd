@@ -27,11 +27,11 @@ func _physics_process(delta):
 	
 	#Desinstanciamento por atingir limite do caminho
 	if (position.x > 1240 and direction == 1):
-		get_parent().takeDamage(5.00)
+		get_parent().takeDamage()
 		queue_free()
 	elif (position.x < 220 and direction == -1):
 		queue_free()
-		get_parent().takeDamage(5.00)
+		get_parent().takeDamage()
 	
 	#Disparo Inimigo
 	if direction == -1 and position.x < 1032 and $AnimatedSprite.animation == "fire":
