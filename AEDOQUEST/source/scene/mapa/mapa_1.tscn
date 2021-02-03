@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://source/sprite/background/castleground.png" type="Texture" id=1]
 [ext_resource path="res://source/scene/Player/Player.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://source/sprite/ui/interaction_icon/interaction_icon8.png" type="Texture" id=23]
 [ext_resource path="res://source/sprite/background/castlewall.png" type="Texture" id=24]
 [ext_resource path="res://source/sprite/ui/crimson_shield_ui1.png" type="Texture" id=25]
+[ext_resource path="res://source/sound/castle_theme_1.ogg" type="AudioStream" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1912.45, 10 )
@@ -381,6 +382,38 @@ tracks/6/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -60.0, -10.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.0, -60.0 ]
+}
+
 [node name="Mapa" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -452,7 +485,7 @@ visible = false
 position = Vector2( 2.45996, -163.575 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="Torre" type="Area2D" parent="."]
@@ -480,7 +513,7 @@ visible = false
 position = Vector2( 17.74, -191.976 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 2
+frame = 8
 playing = true
 
 [node name="Torre2" type="Area2D" parent="."]
@@ -517,7 +550,7 @@ visible = false
 position = Vector2( -2.24301, -196.91 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 1
+frame = 7
 playing = true
 
 [node name="Chao2" type="StaticBody2D" parent="."]
@@ -562,7 +595,7 @@ visible = false
 position = Vector2( -4.70996, -190.01 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 1
+frame = 7
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
@@ -673,3 +706,12 @@ anims/Voltar = SubResource( 9 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 1653.17, 2083.74 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = -10.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AudioStreamPlayer"]
+anims/fade_in = SubResource( 11 )
+anims/fade_out = SubResource( 12 )

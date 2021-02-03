@@ -177,6 +177,7 @@ func enable_canvas():
 	$CanvasLayer/Textbox.hide()
 	
 func enter_minigame(minigame):
+	$AudioStreamPlayer/AnimationPlayer.play("fade_out")
 	game = minigame_list[minigame].instance()
 	current_minigame_index = minigame
 	disable_canvas()
@@ -207,6 +208,7 @@ func exit_minigame(result):
 		$Player/Camera2D.current = false
 		$Minigame_location/Camera2D.current = true
 		return
+	$AudioStreamPlayer/AnimationPlayer.play("fade_in")
 	game.queue_free()
 	enable_canvas()
 	$Minigame_location/Camera2D.current = false

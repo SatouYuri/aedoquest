@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, -60.0 ]
+"values": [ -5.0, -60.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("aqlogo_gradient:modulate")
@@ -173,14 +173,14 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="aqlogo" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.000585803 )
+modulate = Color( 1, 1, 1, 0.00183362 )
 position = Vector2( 639.185, 270 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.00079106 )
+modulate = Color( 1, 1, 1, 0.00115494 )
 margin_left = 3.51013
 margin_top = 398.617
 margin_right = 1277.51
@@ -216,4 +216,5 @@ anims/start = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -5.0
 autoplay = true
