@@ -82,7 +82,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "start"
-length = 5.0
+length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("aqlogo:modulate")
 tracks/0/interp = 1
@@ -90,7 +90,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4 ),
+"times": PoolRealArray( 2, 4, 6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.223529 ), Color( 1, 1, 1, 1 ) ]
@@ -102,10 +102,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 4, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 4.3, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.301961 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("NewGame:disabled")
@@ -114,7 +114,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 4.7 ),
+"times": PoolRealArray( 0, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -126,10 +126,22 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 4.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("aqlogo_gradient:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.172549, 0.141176, 0.192157, 1 ), Color( 0.443137, 0.054902, 0.705882, 1 ) ]
 }
 
 [node name="Main" type="Control"]
@@ -154,21 +166,21 @@ __meta__ = {
 }
 
 [node name="aqlogo_gradient" type="Sprite" parent="."]
-modulate = Color( 0.443137, 0.054902, 0.705882, 1 )
+modulate = Color( 0.172549, 0.141176, 0.192157, 1 )
 position = Vector2( -150, 0 )
 scale = Vector2( 5, 4 )
 texture = ExtResource( 4 )
 centered = false
 
 [node name="aqlogo" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 639.185, 189.072 )
+modulate = Color( 1, 1, 1, 0.000585803 )
+position = Vector2( 639.185, 270 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.0055747 )
+modulate = Color( 1, 1, 1, 0.00079106 )
 margin_left = 3.51013
 margin_top = 398.617
 margin_right = 1277.51
