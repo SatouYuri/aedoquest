@@ -208,6 +208,7 @@ func exit_minigame(result):
 		$Player/Camera2D.current = false
 		$Minigame_location/Camera2D.current = true
 		return
+	$Player.anim_override = true
 	$AudioStreamPlayer/AnimationPlayer.play("fade_in")
 	game.queue_free()
 	enable_canvas()
@@ -321,6 +322,7 @@ func body_leave_door2(body):
 
 func body_close_enemy(body):
 	if body.is_in_group("Player"):
+		$Player.idle()
 		if $Player.position.x > $Enemy.position.x:
 				$Enemy/megumin.flip_h = false
 				$Player.sprite_left()

@@ -174,6 +174,38 @@ tracks/8/keys = {
 "method": "sprite_right"
 } ]
 }
+tracks/9/type = "method"
+tracks/9/path = NodePath("../Player")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "idle"
+}, {
+"args": [  ],
+"method": "walk"
+}, {
+"args": [  ],
+"method": "idle"
+} ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../Player:anim_override")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -242,6 +274,35 @@ tracks/4/keys = {
 "method": "hide"
 } ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath("../Player")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "walk"
+}, {
+"args": [  ],
+"method": "idle"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Player:anim_override")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=9]
 tracks/0/type = "method"
@@ -283,6 +344,35 @@ tracks/2/keys = {
 "args": [  ],
 "method": "prox_fala"
 } ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "walk"
+}, {
+"args": [  ],
+"method": "idle"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Player:anim_override")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -378,6 +468,35 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Player:anim_override")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("../Player")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "walk"
+}, {
+"args": [  ],
+"method": "idle"
+} ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -483,7 +602,7 @@ visible = false
 position = Vector2( 2.45996, -163.575 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="Torre" type="Area2D" parent="."]
@@ -511,7 +630,7 @@ visible = false
 position = Vector2( 17.74, -191.976 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 8
+frame = 5
 playing = true
 
 [node name="Torre2" type="Area2D" parent="."]
@@ -548,7 +667,7 @@ visible = false
 position = Vector2( -2.24301, -196.91 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="Chao2" type="StaticBody2D" parent="."]
@@ -593,7 +712,7 @@ visible = false
 position = Vector2( -4.70996, -190.01 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
-frame = 7
+frame = 4
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
@@ -689,7 +808,7 @@ __meta__ = {
 
 [node name="metronome" type="Sprite" parent="."]
 visible = false
-position = Vector2( 1941.66, 2027.8 )
+position = Vector2( 1286.3, 587.441 )
 scale = Vector2( 0.1, 0.1 )
 z_index = 2
 texture = ExtResource( 11 )

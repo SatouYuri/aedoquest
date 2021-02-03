@@ -172,14 +172,14 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="aqlogo" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.00183362 )
+modulate = Color( 1, 1, 1, 0.000634059 )
 position = Vector2( 639.185, 270 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.00115494 )
+modulate = Color( 1, 1, 1, 0.00112292 )
 margin_left = 3.51013
 margin_top = 398.617
 margin_right = 1277.51

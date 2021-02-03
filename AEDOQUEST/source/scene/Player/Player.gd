@@ -7,6 +7,7 @@ var velocity = Vector2()
 var is_walking = true
 var left_pressed = false
 var right_pressed = false
+export(bool)var anim_override = false
 
 func press_left():
 	left_pressed = true
@@ -19,9 +20,17 @@ func unpress_right():
 
 
 func _ready():
+	$AnimationPlayer.play("idle")
 	add_to_group("Player")
 	set_physics_process(true)
 	pass
+	
+func walk():
+	$AnimationPlayer.play("walk")
+
+func idle():
+	$AnimationPlayer.play("idle")
+
 func walking(val):
 	is_walking = val
 	if val == false:
@@ -43,5 +52,10 @@ func _physics_process(delta):
 		if right_pressed:
 			sprite_right()
 			velocity.x += SPEED
+		if not anim_override:
+			if velocity.x == 0:
+				idle()
+			else:
+				walk()
 		move_and_slide_with_snap(velocity,  Vector2(0,10), Vector2(0,-1))
 	pass
