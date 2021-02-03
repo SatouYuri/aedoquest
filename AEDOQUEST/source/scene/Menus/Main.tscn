@@ -7,15 +7,15 @@
 [ext_resource path="res://source/sprite/ui/aqlogo.png" type="Texture" id=5]
 [ext_resource path="res://source/sound/Strings_of_Bravery.ogg" type="AudioStream" id=6]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 60
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "fadeout"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
@@ -80,8 +80,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "start"
+[sub_resource type="Animation" id=4]
 length = 7.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("aqlogo:modulate")
@@ -157,7 +156,7 @@ margin_left = 3.76221
 margin_top = 135.136
 margin_right = 1277.76
 margin_bottom = 389.136
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Aedo Quest"
 align = 1
 valign = 1
@@ -185,7 +184,7 @@ margin_left = 3.51013
 margin_top = 398.617
 margin_right = 1277.51
 margin_bottom = 652.617
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Aperte para começar"
 align = 1
 valign = 1
@@ -211,8 +210,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fadeout = SubResource( 4 )
-anims/start = SubResource( 3 )
+anims/fadeout = SubResource( 3 )
+anims/start = SubResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
