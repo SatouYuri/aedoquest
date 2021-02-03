@@ -207,6 +207,10 @@ func exit_minigame(result):
 		game.connect("minigame_result",self,"exit_minigame")
 		$Player/Camera2D.current = false
 		$Minigame_location/Camera2D.current = true
+		if current_minigame_index == 0:
+			game.connect("passou_fase",self,"fase_mg1")
+			current_talk = talk_dict["Batalha"]["0"]
+			falando()
 		return
 	$Player.anim_override = true
 	$AudioStreamPlayer/AnimationPlayer.play("fade_in")
